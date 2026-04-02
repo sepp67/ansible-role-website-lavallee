@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>lavallee.tech · Infrastructure, DevOps et facturation électronique</title>
+  <meta name="description" content="Portfolio DevOps, infrastructure Linux et projet de facturation électronique orienté artisans et petites structures." />
+  <link rel="canonical" href="https://lavallee.tech/" />
+  <link rel="alternate" hreflang="fr" href="https://lavallee.tech/" />
+  <link rel="alternate" hreflang="en" href="https://lavallee.tech/en/" />
+  <link rel="alternate" hreflang="de" href="https://lavallee.tech/de/" />
+  <link rel="alternate" hreflang="x-default" href="https://lavallee.tech/" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <a class="brand" href="#top" aria-label="lavallee.tech home">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span>lavallee.tech</span>
+      </a>
+      <div class="nav-group">
+        <nav class="nav-links" aria-label="Primary navigation">
+          <a href="#home">Accueil</a>
+          <a href="#devops">DevOps</a>
+          <a href="#facturier">Facturier</a>
+          <a href="#contact">Contact</a>
+          <a class="btn btn-secondary" href="mailto:contact@lavallee.tech">Me contacter</a>
+        </nav>
+        <nav class="lang-switch" aria-label="Language switcher">
+          <a class="active" href="/">FR</a>
+          <a  href="/en/">EN</a>
+          <a  href="/de/">DE</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero" id="home">
+      <div class="container hero-grid">
+        <div>
+          <span class="eyebrow">Infrastructure · Linux · Automatisation · e-invoicing</span>
+          <h1>Un hub professionnel pour montrer des infrastructures réelles et lancer un produit utile.</h1>
+          <p>Je conçois, déploie et exploite des environnements Linux modernes : reverse proxy, multi-VM, automatisation Ansible, observabilité, sécurité et applications web. En parallèle, je développe un projet de facturation électronique pensé pour les artisans et petites structures qui veulent passer au e-invoicing sans complexité inutile.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#devops">Voir le showcase DevOps</a>
+            <a class="btn btn-secondary" href="#facturier">Découvrir le facturier</a>
+            <a class="btn btn-ghost" href="https://github.com/" target="_blank" rel="noreferrer">Voir GitHub</a>
+          </div>
+          <div class="metrics">
+            <div class="metric"><strong>Infra réelle</strong><span>VM, reverse proxy, réseau, logs, monitoring et CI/CD.</span></div>
+            <div class="metric"><strong>Approche produit</strong><span>Un POC métier autour de la facture électronique 2026.</span></div>
+            <div class="metric"><strong>Objectif business</strong><span>Créer de la valeur, recruter, vendre ou les trois.</span></div>
+          </div>
+        </div>
+        <aside class="hero-card">
+          <h3>Ce que vous trouverez ici</h3>
+          <div class="steps">
+            <div class="step"><strong>Showcase DevOps</strong><br />Une infrastructure déployée et opérée comme preuve de compétences concrètes.</div>
+            <div class="step"><strong>Projet facturier</strong><br />Une démonstration d’un produit orienté facture électronique et automatisation documentaire.</div>
+            <div class="step"><strong>Point d’entrée clair</strong><br />Une vitrine professionnelle séparée des services personnels et associatifs.</div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section-sm">
+      <div class="container grid-3">
+        <article class="card"><h3>Pourquoi ce domaine existe</h3><p>Centraliser une présence professionnelle cohérente : montrer une architecture sérieuse, présenter un projet métier et orienter rapidement un visiteur vers le bon univers.</p></article>
+        <article class="card"><h3>Pour qui</h3><p>Recruteurs, entreprises cherchant un profil Linux / DevOps / IAM, partenaires techniques, artisans et experts-comptables intéressés par un outil simple de e-invoicing.</p></article>
+        <article class="card"><h3>Comment naviguer</h3><p>La partie DevOps sert de portfolio. La partie Facturier sert de démonstration produit. Les services personnels restent isolés sur des sous-domaines dédiés.</p></article>
+      </div>
+    </section>
+
+    <section class="section" id="devops">
+      <div class="container">
+        <span class="eyebrow">Showcase DevOps</span>
+        <h2 class="section-title">Une infrastructure qui sert à la fois de terrain réel et de portfolio.</h2>
+        <p class="section-lead">Ici, l’idée n’est pas de montrer des slides. Il s’agit d’un environnement réellement déployé pour héberger des services, tester des flux de publication, faire tourner des applications et documenter les choix d’architecture.</p>
+        <div class="split" style="margin-top: 2rem;">
+          <article class="card">
+            <h3>Ce que je mets en avant</h3>
+            <ul><li>Déploiement d’environnements multi-VM avec séparation claire des rôles.</li><li>Reverse proxy et exposition sécurisée de services web.</li><li>Automatisation d’installation et de mise à jour avec Ansible.</li><li>Observabilité : logs, métriques, supervision et debugging.</li><li>Intégration CI/CD pour valider et fiabiliser les changements.</li><li>Approche orientée exploitation réelle et non simple démonstration théorique.</li></ul>
+            <div class="tag-row">
+              <span class="tag">Linux</span><span class="tag">Ansible</span><span class="tag">Docker</span><span class="tag">Reverse Proxy</span><span class="tag">Monitoring</span><span class="tag">WireGuard</span><span class="tag">CI/CD</span><span class="tag">Proxmox</span>
+            </div>
+          </article>
+          <article class="card">
+            <h3>Architecture type</h3>
+            <div class="diagram">Internet
+   |
+   v
+[ Reverse Proxy / TLS ]
+   |
+   +--> [ Homepage / Showcase ]
+   +--> [ E-invoicing Demo ]
+   +--> [ Personal Services ]
+   +--> [ Club / YunoHost ]
+
+[ Ansible Control Node ] ----> [ Proxy VM ]
+           |                  [ App VM ]
+           |                  [ Monitoring VM ]
+           |                  [ Club VM ]
+           |
+           +--> CI/CD / validation / deployment
+
+[ Observability ]
+   +--> Logs
+   +--> Metrics
+   +--> Dashboards
+</div>
+          </article>
+        </div>
+        <div class="grid-3" style="margin-top: 1.4rem;">
+          <article class="card"><h3>Projet 1 · Plateforme web multi-services</h3><p>Mutualisation d’une même base d’infrastructure pour héberger des services personnels, associatifs et professionnels, tout en gardant une séparation claire par sous-domaines et par rôle de VM.</p></article>
+          <article class="card"><h3>Projet 2 · Déploiement automatisé</h3><p>Industrialisation des déploiements avec des rôles réutilisables, une structure d’inventaire claire et des pipelines de validation.</p></article>
+          <article class="card"><h3>Projet 3 · Monitoring et exploitation</h3><p>Mise en place de la supervision technique pour gagner en visibilité, diagnostiquer plus vite et documenter le comportement réel du système.</p></article>
+        </div>
+        <div class="split" style="margin-top: 1.6rem;">
+          <article class="card">
+            <h3>Ce qu’un recruteur doit retenir</h3>
+            <ol class="timeline"><li class="timeline-item"><strong>Je ne fais pas seulement du lab.</strong><br />J’utilise la plateforme comme vrai point d’entrée pour des services utiles.</li><li class="timeline-item"><strong>Je couvre plusieurs couches.</strong><br />Système, réseau, reverse proxy, déploiement, debug, sécurité et documentation.</li><li class="timeline-item"><strong>Je travaille orienté résultat.</strong><br />L’objectif est la fiabilité, la lisibilité de l’architecture et la capacité à faire évoluer la plateforme.</li></ol>
+          </article>
+          <article class="card">
+            <h3>Liens utiles</h3>
+            <ul>
+              <li><a href="https://github.com/" target="_blank" rel="noreferrer">GitHub</a></li>
+              <li><a href="/cv.pdf">CV PDF</a></li>
+              <li><a href="mailto:contact@lavallee.tech">contact@lavallee.tech</a></li>
+              <li><a href="#facturier">Facturier</a></li>
+            </ul>
+            <p>Remplace ces liens par tes vraies URLs. Cette structure peut ensuite être découpée en pages détaillées si tu veux aller plus loin.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="facturier">
+      <div class="container">
+        <span class="eyebrow">Projet facturier</span>
+        <h2 class="section-title">Une vitrine métier orientée facture électronique et simplicité d’usage.</h2>
+        <p class="section-lead">Le projet vise à réduire la friction pour les petites structures qui vont devoir s’adapter à la facture électronique. L’objectif n’est pas d’ajouter une usine à gaz, mais de proposer un parcours clair : produire, convertir, contrôler et transmettre.</p>
+        <div class="grid-3" style="margin-top: 2rem;">
+          <article class="card"><h3>Le problème</h3><p>Beaucoup d’artisans travaillent encore avec des documents simples, peu outillés et sans chaîne documentaire structurée. Le passage au e-invoicing risque d’être vécu comme une contrainte si l’outil est trop lourd.</p></article>
+          <article class="card"><h3>La promesse</h3><p>Une interface compréhensible, capable de guider l’utilisateur de la facture vers un format exploitable et transmissible, avec une logique pragmatique plutôt qu’administrative.</p></article>
+          <article class="card"><h3>Le positionnement</h3><p>Un produit focalisé sur la clarté, la compatibilité et l’accompagnement des usages réels des TPE et artisans.</p></article>
+        </div>
+        <div class="split" style="margin-top: 1.6rem;">
+          <article class="card">
+            <h3>Parcours utilisateur cible</h3>
+            <div class="steps"><div class="step">L’utilisateur prépare sa facture via une interface simple ou à partir d’un document existant.</div><div class="step">Les données sont structurées, contrôlées et enrichies si nécessaire.</div><div class="step">Le document est converti dans le format attendu pour la facture électronique.</div><div class="step">L’utilisateur suit l’état d’envoi et garde une traçabilité claire.</div></div>
+          </article>
+          <article class="card">
+            <h3>Axes de démonstration</h3>
+            <ul><li>Ergonomie orientée non-techniciens.</li><li>Production de documents structurés.</li><li>Préparation à l’intégration avec une plateforme partenaire.</li><li>Vision progressive : POC, démonstration, version exploitable.</li><li>Conservation d’une logique simple malgré un contexte réglementaire complexe.</li></ul>
+            <div class="tag-row">
+              <span class="tag">e-invoicing</span><span class="tag">Factur-X</span><span class="tag">Artisans</span><span class="tag">PDF</span><span class="tag">Automation</span>
+            </div>
+          </article>
+        </div>
+        <div class="grid-2" style="margin-top: 1.5rem;">
+          <article class="card"><h3>Ce que cette page doit convertir</h3><ul><li>Un artisan qui veut comprendre rapidement la valeur du produit.</li><li>Un expert-comptable ou partenaire qui veut voir le sérieux de l’approche.</li><li>Un recruteur qui comprend que tu n’es pas seulement infra, mais aussi capable de raisonner produit.</li></ul></article>
+          <article class="card"><h3>Call-to-action recommandés</h3><ul><li><a href="mailto:contact@lavallee.tech?subject=Demande%20de%20d%C3%A9mo%20facturier">Demander une démo</a></li><li><a href="mailto:contact@lavallee.tech?subject=Int%C3%A9r%C3%AAt%20pour%20le%20facturier">Être recontacté</a></li><li><a href="#contact">Parler du projet</a></li></ul></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-sm" id="contact">
+      <div class="container">
+        <div class="panel cta">
+          <div>
+            <h2 style="margin:0 0 .4rem;">Un domaine, deux leviers de valeur</h2>
+            <p>Recrutement côté DevOps / Linux, démonstration produit côté facturier. Le domaine principal sert d’entrée professionnelle, pendant que les sous-domaines personnels et associatifs restent séparés.</p>
+          </div>
+          <div class="hero-actions" style="margin-top:0;">
+            <a class="btn btn-primary" href="mailto:contact@lavallee.tech">Me contacter</a>
+            <a class="btn btn-secondary" href="https://github.com/" target="_blank" rel="noreferrer">GitHub</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-grid">
+      <div>
+        <strong>lavallee.tech</strong><br />
+        Infrastructure, automatisation, Linux, projets web et facture électronique.
+      </div>
+      <div class="footer-links">
+        <a href="#home">Accueil</a>
+        <a href="#devops">DevOps</a>
+        <a href="#facturier">Facturier</a>
+        <a href="mailto:contact@lavallee.tech">Contact</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
