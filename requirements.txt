@@ -1,5 +1,5 @@
 ---
 roles:
-  - name: facturier_demo
+  - name: lavallee_website
     src: git+https://github.com/sepp67/ansible-role-website-lavallee.git
     version: main
