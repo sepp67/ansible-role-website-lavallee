@@ -317,7 +317,7 @@ code.inline {
   .metrics { grid-template-columns: 1fr; }
   .footer-grid { grid-template-columns: 1fr; }
 }
-@media (max-width: 760px) {
+@media (max-width: 768px) {
   .nav {
     flex-direction: column;
     align-items: stretch;
@@ -327,6 +327,19 @@ code.inline {
     flex-direction: column;
     align-items: stretch;
   }
+    .brand-logo-shell {
+    min-height: 52px;
+    padding: 0.25rem 0.4rem;
+    border-radius: 12px;
+  }
+
+  .logo {
+    height: 42px;
+  }
+
+  .brand-text {
+    font-size: 0.98rem;
+  }
   .nav-links { justify-content: space-between; }
   .lang-switch {
     padding-left: 0;
@@ -334,4 +347,36 @@ code.inline {
     padding-top: .4rem;
   }
   .hero { padding-top: 42px; }
+}
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+}
+
+.brand-logo-shell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.35rem 0.5rem;
+  min-height: 64px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.96);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.22);
+  flex-shrink: 0;
+}
+
+.logo {
+  display: block;
+  height: 52px;
+  width: auto;
+  max-width: none;
+}
+
+.brand-text {
+  font-size: 1.08rem;
+  color: var(--text);
+  white-space: nowrap;
 }

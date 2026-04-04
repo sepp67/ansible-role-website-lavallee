@@ -15,9 +15,11 @@
 <body>
   <header>
     <div class="container nav">
-      <a class="brand" href="#top" aria-label="lavallee.tech home">
-        <span class="brand-mark" aria-hidden="true"></span>
-        <span>lavallee.tech</span>
+      <a class="brand" href="#top" aria-label="Retour à l'accueil">
+        <span class="brand-logo-shell">
+        <img src="/assets/logo.png" alt="lavallee.tech" class="logo" />
+        </span>
+        <span class="brand-text">lavallee.tech</span>
       </a>
       <div class="nav-group">
         <nav class="nav-links" aria-label="Primary navigation">
@@ -25,7 +27,7 @@
           <a href="#devops">DevOps</a>
           <a href="#facturier">E-Rechnung</a>
           <a href="#contact">Kontakt</a>
-          <a class="btn btn-secondary" href="mailto:contact@lavallee.tech">Kontakt aufnehmen</a>
+          <a class="btn btn-secondary" href="mailto:info@lavallee.tech">Kontakt aufnehmen</a>
         </nav>
         <nav class="lang-switch" aria-label="Language switcher">
           <a  href="/">FR</a>
@@ -41,17 +43,17 @@
       <div class="container hero-grid">
         <div>
           <span class="eyebrow">Infrastruktur · Linux · Automatisierung · E-Rechnung</span>
-          <h1>Ein professioneller Hub, um reale Infrastruktur zu zeigen und ein nützliches Produkt zu präsentieren.</h1>
+          <h1>Ein professioneller Hub, um reale Infrastrukturen zu zeigen und ein nützliches Produkt zu präsentieren.</h1>
           <p>Ich konzipiere, deploye und betreibe moderne Linux-Umgebungen: Reverse Proxy, Multi-VM-Architekturen, Automatisierung mit Ansible, Observability, Security und Webanwendungen. Parallel dazu entwickle ich ein E-Rechnungsprojekt für Handwerker und kleine Unternehmen, die einen pragmatischen Einstieg in die elektronische Rechnungsstellung suchen.</p>
           <div class="hero-actions">
             <a class="btn btn-primary" href="#devops">DevOps-Showcase ansehen</a>
             <a class="btn btn-secondary" href="#facturier">E-Rechnungsprojekt entdecken</a>
-            <a class="btn btn-ghost" href="https://github.com/" target="_blank" rel="noreferrer">GitHub öffnen</a>
+            <a class="btn btn-ghost" href="https://github.com/sepp67/devops_staging_prod_infra" target="_blank" rel="noreferrer">GitHub öffnen</a>
           </div>
           <div class="metrics">
-            <div class="metric"><strong>Reale Infrastruktur</strong><span>VMs, Reverse Proxy, Netzwerk, Logs, Monitoring und CI/CD.</span></div>
-            <div class="metric"><strong>Produktdenken</strong><span>Ein fachlich orientierter Proof of Concept rund um die E-Rechnung 2026.</span></div>
-            <div class="metric"><strong>Geschäftsziel</strong><span>Wert schaffen, einen Job gewinnen, verkaufen oder alles zusammen.</span></div>
+            <div class="metric"><strong>Reale Infrastrukturen</strong><span>VMs, Reverse Proxy, Netzwerk, Logs, Monitoring und CI/CD.</span></div>
+            <div class="metric"><strong>Der digitale Rechnungssteller</strong><span>Ein einfaches Tool für die elektronische Rechnung 2026.</span></div>
+            <div class="metric"><strong>Das Ziel dieser Website</strong><span>Meine technischen DevOps-Kompetenzen unter Beweis stellen.</span></div>
           </div>
         </div>
         <aside class="hero-card">
@@ -76,7 +78,7 @@
     <section class="section" id="devops">
       <div class="container">
         <span class="eyebrow">DevOps-Showcase</span>
-        <h2 class="section-title">Eine Infrastruktur, die gleichzeitig reale Plattform und Portfolio ist.</h2>
+        <h2 class="section-title">Eine Infrastruktur, die gleichzeitig eine reale Plattform und ein Portfolio ist.</h2>
         <p class="section-lead">Hier geht es nicht um Folien. Es ist eine echte Umgebung, die Dienste hostet, Veröffentlichungsprozesse testet, Anwendungen betreibt und Architekturentscheidungen dokumentiert.</p>
         <div class="split" style="margin-top: 2rem;">
           <article class="card">
@@ -119,18 +121,16 @@
         </div>
         <div class="split" style="margin-top: 1.6rem;">
           <article class="card">
-            <h3>Was Recruiter mitnehmen sollten</h3>
+            <h3>Was Sie mitnehmen sollten</h3>
             <ol class="timeline"><li class="timeline-item"><strong>Das ist nicht nur ein Lab.</strong><br />Die Plattform wird als echter Einstiegspunkt für nützliche Dienste verwendet.</li><li class="timeline-item"><strong>Ich decke mehrere Schichten ab.</strong><br />System, Netzwerk, Reverse Proxy, Deployment, Troubleshooting, Security und Dokumentation.</li><li class="timeline-item"><strong>Ich arbeite zielorientiert.</strong><br />Im Fokus stehen Zuverlässigkeit, Architektur-Klarheit und die Fähigkeit, die Plattform weiterzuentwickeln.</li></ol>
           </article>
           <article class="card">
             <h3>Nützliche Links</h3>
             <ul>
-              <li><a href="https://github.com/" target="_blank" rel="noreferrer">GitHub</a></li>
-              <li><a href="/cv.pdf">CV PDF</a></li>
-              <li><a href="mailto:contact@lavallee.tech">contact@lavallee.tech</a></li>
+              <li><a href="https://github.com/sepp67/devops_staging_prod_infra" target="_blank" rel="noreferrer">GitHub</a></li>
+              <li><a href="mailto:info@lavallee.tech">info@lavallee.tech</a></li>
               <li><a href="#facturier">E-Rechnung</a></li>
             </ul>
-            <p>Ersetze diese Platzhalter durch deine echten URLs. Später kannst du diese Struktur in detailliertere Seiten aufteilen.</p>
           </article>
         </div>
       </div>
@@ -148,20 +148,20 @@
         </div>
         <div class="split" style="margin-top: 1.6rem;">
           <article class="card">
-            <h3>Zielhafter Nutzerablauf</h3>
+            <h3>Der Nutzerablauf der App</h3>
             <div class="steps"><div class="step">Der Nutzer erstellt eine Rechnung über eine einfache Oberfläche oder aus einem bestehenden Dokument.</div><div class="step">Die Daten werden strukturiert, geprüft und bei Bedarf ergänzt.</div><div class="step">Das Dokument wird in das erforderliche E-Rechnungsformat umgewandelt.</div><div class="step">Der Nutzer verfolgt den Versandstatus und behält eine klare Nachvollziehbarkeit.</div></div>
           </article>
           <article class="card">
-            <h3>Demonstrationsschwerpunkte</h3>
-            <ul><li>Usability für Nicht-Techniker.</li><li>Erzeugung strukturierter Dokumente.</li><li>Vorbereitung auf die Integration mit einer Plattform.</li><li>Schrittweise Vision: Proof of Concept, Demo, dann nutzbare Version.</li><li>Ein einfacher Ablauf trotz regulatorischer Komplexität.</li></ul>
+            <h3>Die Stärken dieses Tools</h3>
+            <ul><li>Usability für Nicht-Techniker.</li><li>Erstellung gesetzeskonformer Dokumente.</li><li>Kompatibel mit super_PDP. Die „Plateforme Agréée“ (PDP), die Ihre Daten nicht weiterverkauft.</li><li>Persönliche Betreuung in allen Phasen der gesetzlichen Anforderungen.</li><li>Ein einfacher Ablauf trotz regulatorischer Komplexität.</li></ul>
             <div class="tag-row">
               <span class="tag">e-invoicing</span><span class="tag">Factur-X</span><span class="tag">Artisans</span><span class="tag">PDF</span><span class="tag">Automation</span>
             </div>
           </article>
         </div>
         <div class="grid-2" style="margin-top: 1.5rem;">
-          <article class="card"><h3>Wen diese Seite überzeugen soll</h3><ul><li>Einen Handwerker, der den Nutzen des Produkts schnell verstehen will.</li><li>Einen Steuerberater oder Partner, der die Seriosität des Ansatzes beurteilen möchte.</li><li>Einen Recruiter, der erkennt, dass du nicht nur Infrastruktur kannst, sondern auch produktorientiert denkst.</li></ul></article>
-          <article class="card"><h3>Empfohlene Calls to Action</h3><ul><li><a href="mailto:contact@lavallee.tech?subject=Demoanfrage%20E-Rechnung">Demo anfragen</a></li><li><a href="mailto:contact@lavallee.tech?subject=Interesse%20am%20E-Rechnungsprojekt">Rückruf anfragen</a></li><li><a href="#contact">Über das Projekt sprechen</a></li></ul></article>
+          <article class="card"><h3>Für wen ist diese App gedacht?</h3><ul><li>Für Geschäftsführer von KMUs, die nach einer einfachen und effizienten Lösung suchen. </li><li>Für Steuerberater oder Partner, die sich von der Seriosität des Ansatzes überzeugen möchten.</li></ul></article>
+          <article class="card"><h3>Sie wünschen weitere Informationen?</h3><ul><li><a href="http://localhost:8080/#facturier">Testen Sie den Rechnungssteller</a></li><li><a href="mailto:info@lavallee.tech?subject=Interesse%20am%20E-Rechnungsprojekt">Kontaktieren Sie uns per E-Mail</a></li></ul></article>
         </div>
       </div>
     </section>
@@ -170,12 +170,12 @@
       <div class="container">
         <div class="panel cta">
           <div>
-            <h2 style="margin:0 0 .4rem;">Eine Domain, zwei Werthebel</h2>
-            <p>Recruiting auf der DevOps-/Linux-Seite, Produktpräsentation auf der E-Rechnungs-Seite. Die Hauptdomain bleibt professionell, während private und Vereinsdienste sauber auf Subdomains getrennt sind.</p>
+            <h2 style="margin:0 0 .4rem;">Eine Domain, eine DevOps-Plattform und vieles mehr</h2>
+            <p>Diese Website dient als Einstiegsportal und als meine Hosting-Plattform. Sie richtet sich an Personalvermittler, Personen, die einen DevOps-/Linux-Spezialisten suchen, sowie an diejenigen, die einen Anbieter für digitale Rechnungsstellung suchen.</p>
           </div>
           <div class="hero-actions" style="margin-top:0;">
-            <a class="btn btn-primary" href="mailto:contact@lavallee.tech">Kontakt aufnehmen</a>
-            <a class="btn btn-secondary" href="https://github.com/" target="_blank" rel="noreferrer">GitHub</a>
+            <a class="btn btn-primary" href="mailto:info@lavallee.tech">Kontakt aufnehmen</a>
+            <a class="btn btn-secondary" href="https://github.com/sepp67/devops_staging_prod_infra" target="_blank" rel="noreferrer">GitHub</a>
           </div>
         </div>
       </div>
@@ -192,7 +192,7 @@
         <a href="#home">Start</a>
         <a href="#devops">DevOps</a>
         <a href="#facturier">E-Rechnung</a>
-        <a href="mailto:contact@lavallee.tech">Kontakt</a>
+        <a href="mailto:info@lavallee.tech">Kontakt</a>
       </div>
     </div>
   </footer>

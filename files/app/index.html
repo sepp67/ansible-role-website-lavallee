@@ -11,13 +11,16 @@
   <link rel="alternate" hreflang="de" href="https://lavallee.tech/de/" />
   <link rel="alternate" hreflang="x-default" href="https://lavallee.tech/" />
   <link rel="stylesheet" href="css/style.css" />
+  <link rel="preload" href="/assets/logo.png" as="image">
 </head>
 <body>
   <header>
     <div class="container nav">
-      <a class="brand" href="#top" aria-label="lavallee.tech home">
-        <span class="brand-mark" aria-hidden="true"></span>
-        <span>lavallee.tech</span>
+      <a class="brand" href="#top" aria-label="Retour à l'accueil">
+        <span class="brand-logo-shell">
+        <img src="/assets/logo.png" alt="lavallee.tech" class="logo" />
+        </span>
+        <span class="brand-text">lavallee.tech</span>
       </a>
       <div class="nav-group">
         <nav class="nav-links" aria-label="Primary navigation">
@@ -25,7 +28,7 @@
           <a href="#devops">DevOps</a>
           <a href="#facturier">Facturier</a>
           <a href="#contact">Contact</a>
-          <a class="btn btn-secondary" href="mailto:contact@lavallee.tech">Me contacter</a>
+          <a class="btn btn-secondary" href="mailto:info@lavallee.tech">Me contacter</a>
         </nav>
         <nav class="lang-switch" aria-label="Language switcher">
           <a class="active" href="/">FR</a>
@@ -46,12 +49,12 @@
           <div class="hero-actions">
             <a class="btn btn-primary" href="#devops">Voir le showcase DevOps</a>
             <a class="btn btn-secondary" href="#facturier">Découvrir le facturier</a>
-            <a class="btn btn-ghost" href="https://github.com/" target="_blank" rel="noreferrer">Voir GitHub</a>
+            <a class="btn btn-ghost" href="https://github.com/sepp67/devops_staging_prod_infra" target="_blank" rel="noreferrer">Voir GitHub</a>
           </div>
           <div class="metrics">
-            <div class="metric"><strong>Infra réelle</strong><span>VM, reverse proxy, réseau, logs, monitoring et CI/CD.</span></div>
-            <div class="metric"><strong>Approche produit</strong><span>Un POC métier autour de la facture électronique 2026.</span></div>
-            <div class="metric"><strong>Objectif business</strong><span>Créer de la valeur, recruter, vendre ou les trois.</span></div>
+            <div class="metric"><strong>Une infra réelle</strong><span>VM, reverse proxy, réseau, logs, monitoring et CI/CD.</span></div>
+            <div class="metric"><strong>Le facturier digital</strong><span>Un outil simple pour la facture électronique 2026.</span></div>
+            <div class="metric"><strong>L'objectif de ce site</strong><span>Montrer mes compétences techniques de devops.</span></div>
           </div>
         </div>
         <aside class="hero-card">
@@ -76,7 +79,7 @@
     <section class="section" id="devops">
       <div class="container">
         <span class="eyebrow">Showcase DevOps</span>
-        <h2 class="section-title">Une infrastructure qui sert à la fois de terrain réel et de portfolio.</h2>
+        <h2 class="section-title">Une infrastructure qui est utilisé sur le terrain réel et qui sert de portfolio.</h2>
         <p class="section-lead">Ici, l’idée n’est pas de montrer des slides. Il s’agit d’un environnement réellement déployé pour héberger des services, tester des flux de publication, faire tourner des applications et documenter les choix d’architecture.</p>
         <div class="split" style="margin-top: 2rem;">
           <article class="card">
@@ -119,18 +122,16 @@
         </div>
         <div class="split" style="margin-top: 1.6rem;">
           <article class="card">
-            <h3>Ce qu’un recruteur doit retenir</h3>
+            <h3>Ce que vous devez retenir</h3>
             <ol class="timeline"><li class="timeline-item"><strong>Je ne fais pas seulement du lab.</strong><br />J’utilise la plateforme comme vrai point d’entrée pour des services utiles.</li><li class="timeline-item"><strong>Je couvre plusieurs couches.</strong><br />Système, réseau, reverse proxy, déploiement, debug, sécurité et documentation.</li><li class="timeline-item"><strong>Je travaille orienté résultat.</strong><br />L’objectif est la fiabilité, la lisibilité de l’architecture et la capacité à faire évoluer la plateforme.</li></ol>
           </article>
           <article class="card">
             <h3>Liens utiles</h3>
             <ul>
-              <li><a href="https://github.com/" target="_blank" rel="noreferrer">GitHub</a></li>
-              <li><a href="/cv.pdf">CV PDF</a></li>
-              <li><a href="mailto:contact@lavallee.tech">contact@lavallee.tech</a></li>
+              <li><a href="https://github.com/sepp67/devops_staging_prod_infra" target="_blank" rel="noreferrer">GitHub</a></li>
+              <li><a href="mailto:info@lavallee.tech">info@lavallee.tech</a></li>
               <li><a href="#facturier">Facturier</a></li>
             </ul>
-            <p>Remplace ces liens par tes vraies URLs. Cette structure peut ensuite être découpée en pages détaillées si tu veux aller plus loin.</p>
           </article>
         </div>
       </div>
@@ -148,20 +149,20 @@
         </div>
         <div class="split" style="margin-top: 1.6rem;">
           <article class="card">
-            <h3>Parcours utilisateur cible</h3>
+            <h3>Mode d'emploi du facturier digital</h3>
             <div class="steps"><div class="step">L’utilisateur prépare sa facture via une interface simple ou à partir d’un document existant.</div><div class="step">Les données sont structurées, contrôlées et enrichies si nécessaire.</div><div class="step">Le document est converti dans le format attendu pour la facture électronique.</div><div class="step">L’utilisateur suit l’état d’envoi et garde une traçabilité claire.</div></div>
           </article>
           <article class="card">
-            <h3>Axes de démonstration</h3>
-            <ul><li>Ergonomie orientée non-techniciens.</li><li>Production de documents structurés.</li><li>Préparation à l’intégration avec une plateforme partenaire.</li><li>Vision progressive : POC, démonstration, version exploitable.</li><li>Conservation d’une logique simple malgré un contexte réglementaire complexe.</li></ul>
+            <h3>Les points forts de cet outil</h3>
+            <ul><li>Ergonomie orientée non-techniciens.</li><li>Production de documents conformes à la législation.</li><li>Compatible avec super_PDP. La Plateforme Agréée (PDP), qui ne revend pas vos informations</li><li>Un accompagnement personel à travers toutes les étapes de la législtaion</li><li>Conservation d’une logique simple malgré un contexte réglementaire complexe.</li></ul>
             <div class="tag-row">
               <span class="tag">e-invoicing</span><span class="tag">Factur-X</span><span class="tag">Artisans</span><span class="tag">PDF</span><span class="tag">Automation</span>
             </div>
           </article>
         </div>
         <div class="grid-2" style="margin-top: 1.5rem;">
-          <article class="card"><h3>Ce que cette page doit convertir</h3><ul><li>Un artisan qui veut comprendre rapidement la valeur du produit.</li><li>Un expert-comptable ou partenaire qui veut voir le sérieux de l’approche.</li><li>Un recruteur qui comprend que tu n’es pas seulement infra, mais aussi capable de raisonner produit.</li></ul></article>
-          <article class="card"><h3>Call-to-action recommandés</h3><ul><li><a href="mailto:contact@lavallee.tech?subject=Demande%20de%20d%C3%A9mo%20facturier">Demander une démo</a></li><li><a href="mailto:contact@lavallee.tech?subject=Int%C3%A9r%C3%AAt%20pour%20le%20facturier">Être recontacté</a></li><li><a href="#contact">Parler du projet</a></li></ul></article>
+          <article class="card"><h3>À qui est destinée cette application ?</h3><ul><li>Un artisan ou un chef de PME qui cherche une solution simple et efficace.</li><li>Un expert-comptable ou partenaire qui veut voir le sérieux de l’approche.</li></ul></article>
+          <article class="card"><h3>Vous souhaitez plus d'information</h3><ul><li><a href="http://localhost:8080/#facturier">Tester le facturier</a></li><li><a href="mailto:info@lavallee.tech?subject=Int%C3%A9r%C3%AAt%20pour%20le%20facturier">Prendre contact par mail</a></li></ul></article>
         </div>
       </div>
     </section>
@@ -170,12 +171,12 @@
       <div class="container">
         <div class="panel cta">
           <div>
-            <h2 style="margin:0 0 .4rem;">Un domaine, deux leviers de valeur</h2>
-            <p>Recrutement côté DevOps / Linux, démonstration produit côté facturier. Le domaine principal sert d’entrée professionnelle, pendant que les sous-domaines personnels et associatifs restent séparés.</p>
+            <h2 style="margin:0 0 .4rem;">Un domaine, une plateforme devops et bien plus</h2>
+            <p>Ce site web sert de porte d'entrée, de ma plateforme d'hébergement. Il est destiné aux recruteurs, aux personnes cherchant un Devops / Linux et à ceux qui cherchent un facturier digital.</p>
           </div>
           <div class="hero-actions" style="margin-top:0;">
-            <a class="btn btn-primary" href="mailto:contact@lavallee.tech">Me contacter</a>
-            <a class="btn btn-secondary" href="https://github.com/" target="_blank" rel="noreferrer">GitHub</a>
+            <a class="btn btn-primary" href="mailto:info@lavallee.tech">Me contacter</a>
+            <a class="btn btn-secondary" href="https://github.com/sepp67/devops_staging_prod_infra" target="_blank" rel="noreferrer">GitHub</a>
           </div>
         </div>
       </div>
@@ -192,7 +193,7 @@
         <a href="#home">Accueil</a>
         <a href="#devops">DevOps</a>
         <a href="#facturier">Facturier</a>
-        <a href="mailto:contact@lavallee.tech">Contact</a>
+        <a href="mailto:info@lavallee.tech">Contact</a>
       </div>
     </div>
   </footer>
