@@ -3,38 +3,402 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>lavallee.tech · Infrastruktur, DevOps und E-Rechnung</title>
-  <meta name="description" content="DevOps-Portfolio, Linux-Infrastruktur und ein E-Rechnungsprojekt für Handwerker und kleine Unternehmen." />
-  <link rel="canonical" href="https://lavallee.tech/de/" />
-  <link rel="alternate" hreflang="fr" href="https://lavallee.tech/" />
-  <link rel="alternate" hreflang="en" href="https://lavallee.tech/en/" />
+  <title>lavallee.tech · Produktionsreife DevOps-Infrastruktur</title>
+  <meta name="description" content="lavallee.tech ist ein DevOps-Portfolio mit Fokus auf produktionsreife Linux-Infrastruktur, Automatisierung, Observability und reale Deployments." />
+  <link rel="preload" href="/assets/logo.png" as="image" />
+  <link rel="alternate" hreflang="en" href="https://lavallee.tech/" />
   <link rel="alternate" hreflang="de" href="https://lavallee.tech/de/" />
+  <link rel="alternate" hreflang="fr" href="https://lavallee.tech/fr/" />
   <link rel="alternate" hreflang="x-default" href="https://lavallee.tech/" />
-  <link rel="stylesheet" href="../css/style.css" />
+  <style>
+    :root {
+      --bg: #0b1220;
+      --panel: #121a2b;
+      --panel-2: #18233a;
+      --text: #edf2f7;
+      --muted: #a7b3c9;
+      --line: #2a3856;
+      --accent: #6ea8fe;
+      --accent-2: #8ef0c1;
+      --max: 1180px;
+      --radius: 18px;
+      --shadow: 0 18px 50px rgba(0,0,0,.28);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at top right, rgba(110,168,254,.16), transparent 28%),
+        radial-gradient(circle at top left, rgba(142,240,193,.10), transparent 22%),
+        var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+    .container { width: min(var(--max), calc(100% - 2rem)); margin: 0 auto; }
+    .section { padding: 76px 0; }
+    .section-sm { padding: 56px 0; }
+    .eyebrow {
+      display: inline-block;
+      padding: .35rem .75rem;
+      border: 1px solid rgba(110,168,254,.35);
+      border-radius: 999px;
+      color: var(--accent);
+      font-size: .88rem;
+      letter-spacing: .02em;
+      background: rgba(110,168,254,.08);
+    }
+    .section-title {
+      margin: 16px 0 12px;
+      font-size: clamp(1.9rem, 2vw + 1rem, 3.1rem);
+      line-height: 1.1;
+    }
+    .section-lead {
+      max-width: 860px;
+      color: var(--muted);
+      font-size: 1.05rem;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(16px);
+      background: rgba(11,18,32,.74);
+      border-bottom: 1px solid rgba(255,255,255,.06);
+    }
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      min-height: 82px;
+      gap: 1rem;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: .9rem;
+      font-weight: 700;
+      letter-spacing: .01em;
+      min-width: 0;
+    }
+    .brand-logo-shell {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: .34rem .48rem;
+      min-height: 64px;
+      border-radius: 14px;
+      background: rgba(255,255,255,.96);
+      box-shadow: 0 6px 18px rgba(0, 0, 0, .22);
+      flex-shrink: 0;
+    }
+    .logo {
+      display: block;
+      height: 52px;
+      width: auto;
+      max-width: none;
+    }
+    .brand-text {
+      font-size: 1.08rem;
+      color: var(--text);
+      white-space: nowrap;
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+    .nav-links a {
+      color: var(--muted);
+      font-size: .96rem;
+    }
+    .nav-links a:hover,
+    .nav-links a:focus-visible { color: var(--text); }
+    .lang-switch {
+      display: inline-flex;
+      align-items: center;
+      gap: .4rem;
+      padding: .25rem;
+      border-radius: 999px;
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(255,255,255,.08);
+    }
+    .lang-switch a {
+      padding: .4rem .7rem;
+      border-radius: 999px;
+      font-size: .88rem;
+    }
+    .lang-switch a.active {
+      color: white;
+      background: rgba(110,168,254,.25);
+      border: 1px solid rgba(110,168,254,.25);
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: .55rem;
+      padding: .92rem 1.2rem;
+      border-radius: 12px;
+      border: 1px solid transparent;
+      font-weight: 600;
+      transition: transform .15s ease, border-color .15s ease, background .15s ease;
+      cursor: pointer;
+    }
+    .btn:hover { transform: translateY(-1px); }
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent), #528ef1);
+      color: white;
+      box-shadow: 0 14px 28px rgba(110,168,254,.25);
+    }
+    .btn-secondary {
+      background: rgba(255,255,255,.03);
+      color: var(--text);
+      border-color: rgba(255,255,255,.12);
+    }
+    .btn-ghost {
+      background: transparent;
+      border-color: rgba(255,255,255,.12);
+      color: var(--muted);
+    }
+
+    .hero { padding: 84px 0 60px; }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap: 2rem;
+      align-items: center;
+    }
+    .hero h1 {
+      margin: 18px 0 16px;
+      font-size: clamp(2.5rem, 4vw, 4.9rem);
+      line-height: 1.02;
+      letter-spacing: -.03em;
+      max-width: 850px;
+    }
+    .hero p {
+      max-width: 760px;
+      color: var(--muted);
+      font-size: 1.12rem;
+    }
+    .hero-actions {
+      display: flex;
+      gap: .9rem;
+      flex-wrap: wrap;
+      margin-top: 1.5rem;
+    }
+    .hero-card,
+    .card,
+    .panel {
+      background: linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.02));
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+    .hero-card { padding: 1.35rem; }
+    .hero-card h3 { margin-top: 0; }
+
+    .metrics {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+      margin-top: 1.4rem;
+    }
+    .metric {
+      padding: 1rem;
+      border-radius: 14px;
+      background: rgba(255,255,255,.03);
+      border: 1px solid rgba(255,255,255,.06);
+    }
+    .metric strong {
+      display: block;
+      font-size: 1.35rem;
+      margin-bottom: .2rem;
+    }
+    .metric span {
+      color: var(--muted);
+      font-size: .95rem;
+    }
+
+    .grid-2, .grid-3, .grid-4 {
+      display: grid;
+      gap: 1.25rem;
+    }
+    .grid-2 { grid-template-columns: repeat(2, 1fr); }
+    .grid-3 { grid-template-columns: repeat(3, 1fr); }
+    .grid-4 { grid-template-columns: repeat(4, 1fr); }
+
+    .card { padding: 1.35rem; }
+    .card h3, .card h4 { margin-top: 0; }
+    .card p, .card li { color: var(--muted); }
+    .card ul {
+      padding-left: 1.1rem;
+      margin-bottom: 0;
+    }
+    .tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .5rem;
+      margin-top: 1rem;
+    }
+    .tag {
+      padding: .42rem .68rem;
+      border-radius: 999px;
+      font-size: .88rem;
+      background: rgba(110,168,254,.08);
+      border: 1px solid rgba(110,168,254,.18);
+      color: #cfe1ff;
+    }
+
+    .split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.6rem;
+      align-items: start;
+    }
+    .diagram {
+      padding: 1.35rem;
+      overflow-x: auto;
+      font-family: "JetBrains Mono", "Fira Code", monospace;
+      font-size: .92rem;
+      color: #d8e5ff;
+      background: #0e1627;
+      border-radius: 16px;
+      border: 1px solid rgba(255,255,255,.08);
+      white-space: pre;
+    }
+
+    .steps {
+      counter-reset: step;
+      display: grid;
+      gap: 1rem;
+    }
+    .step {
+      padding: 1rem 1rem 1rem 4rem;
+      position: relative;
+      border-radius: 14px;
+      background: rgba(255,255,255,.03);
+      border: 1px solid rgba(255,255,255,.08);
+    }
+    .step::before {
+      counter-increment: step;
+      content: counter(step);
+      position: absolute;
+      left: 1rem;
+      top: 1rem;
+      width: 2.2rem;
+      height: 2.2rem;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      font-weight: 700;
+      color: white;
+      background: linear-gradient(135deg, var(--accent), #4d7fe0);
+    }
+
+    .cta {
+      padding: 1.6rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .cta p { margin: 0; color: var(--muted); }
+
+    footer {
+      padding: 28px 0 60px;
+      color: var(--muted);
+      border-top: 1px solid rgba(255,255,255,.08);
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 1rem;
+      align-items: center;
+    }
+    .footer-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 980px) {
+      .hero-grid,
+      .split,
+      .grid-2,
+      .grid-3,
+      .grid-4 {
+        grid-template-columns: 1fr;
+      }
+      .metrics {
+        grid-template-columns: 1fr;
+      }
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 900px) {
+      .brand-text { display: none; }
+    }
+
+    @media (max-width: 768px) {
+      .brand-logo-shell {
+        min-height: 52px;
+        padding: .25rem .4rem;
+        border-radius: 12px;
+      }
+      .logo { height: 42px; }
+    }
+
+    @media (max-width: 680px) {
+      .nav {
+        flex-direction: column;
+        align-items: stretch;
+        padding: .8rem 0;
+      }
+      .nav-links {
+        justify-content: space-between;
+      }
+      .hero { padding-top: 42px; }
+    }
+  </style>
 </head>
 <body>
   <header>
     <div class="container nav">
-      <a class="brand" href="#top" aria-label="Retour à l'accueil">
+      <a class="brand" href="#top" aria-label="Zurück nach oben">
         <span class="brand-logo-shell">
-        <img src="/assets/logo.png" alt="lavallee.tech" class="logo" />
+          <img src="/assets/logo.png" alt="lavallee.tech" class="logo" />
         </span>
         <span class="brand-text">lavallee.tech</span>
       </a>
-      <div class="nav-group">
-        <nav class="nav-links" aria-label="Primary navigation">
-          <a href="#home">Start</a>
-          <a href="#devops">DevOps</a>
-          <a href="#facturier">E-Rechnung</a>
-          <a href="#contact">Kontakt</a>
-          <a class="btn btn-secondary" href="mailto:info@lavallee.tech">Kontakt aufnehmen</a>
-        </nav>
-        <nav class="lang-switch" aria-label="Language switcher">
-          <a  href="/">FR</a>
-          <a  href="/en/">EN</a>
-          <a class="active" href="/de/">DE</a>
-        </nav>
-      </div>
+      <nav class="nav-links" aria-label="Hauptnavigation">
+        <a href="#home">Start</a>
+        <a href="#architecture">Architektur</a>
+        <a href="#capabilities">Kompetenzen</a>
+        <a href="#projects">Projekte</a>
+        <a href="#contact">Kontakt</a>
+        <span class="lang-switch" aria-label="Sprachauswahl">
+          <a href="/">EN</a>
+          <a href="/de/" class="active" aria-current="page">DE</a>
+          <a href="/fr/">FR</a>
+        </span>
+        <a class="btn btn-secondary"
+           href="mailto:info@lavallee.tech?subject=CV-Anfrage">
+          CV anfragen
+        </a>
+      </nav>
     </div>
   </header>
 
@@ -42,127 +406,240 @@
     <section class="hero" id="home">
       <div class="container hero-grid">
         <div>
-          <span class="eyebrow">Infrastruktur · Linux · Automatisierung · E-Rechnung</span>
-          <h1>Ein professioneller Hub, um reale Infrastrukturen zu zeigen und ein nützliches Produkt zu präsentieren.</h1>
-          <p>Ich konzipiere, deploye und betreibe moderne Linux-Umgebungen: Reverse Proxy, Multi-VM-Architekturen, Automatisierung mit Ansible, Observability, Security und Webanwendungen. Parallel dazu entwickle ich ein E-Rechnungsprojekt für Handwerker und kleine Unternehmen, die einen pragmatischen Einstieg in die elektronische Rechnungsstellung suchen.</p>
+          <span class="eyebrow">Produktionsreifes DevOps-Portfolio</span>
+          <h1>Sie können mir produktive Systeme anvertrauen.</h1>
+          <p>
+            Ich entwerfe, implementiere und betreibe produktionsreife Linux-Infrastrukturen für reale Anwendungen.
+            Mein Fokus ist klar: Automatisierung, kontrollierte Exposition von Services, Observability und Architekturen, die auch unter realen Betriebsbedingungen wartbar bleiben.
+          </p>
           <div class="hero-actions">
-            <a class="btn btn-primary" href="#devops">DevOps-Showcase ansehen</a>
-            <a class="btn btn-secondary" href="#facturier">E-Rechnungsprojekt entdecken</a>
-            <a class="btn btn-ghost" href="https://github.com/sepp67/devops_staging_prod_infra" target="_blank" rel="noreferrer">GitHub öffnen</a>
+            <a class="btn btn-primary" href="#architecture">Architektur ansehen</a>
+            <a class="btn btn-secondary" href="https://github.com/sepp67" target="_blank" rel="noreferrer">GitHub ansehen</a>
+            <a class="btn btn-ghost" href="mailto:info@lavallee.tech">Kontakt aufnehmen</a>
           </div>
           <div class="metrics">
-            <div class="metric"><strong>Reale Infrastrukturen</strong><span>VMs, Reverse Proxy, Netzwerk, Logs, Monitoring und CI/CD.</span></div>
-            <div class="metric"><strong>Der digitale Rechnungssteller</strong><span>Ein einfaches Tool für die elektronische Rechnung 2026.</span></div>
-            <div class="metric"><strong>Das Ziel dieser Website</strong><span>Meine technischen DevOps-Kompetenzen unter Beweis stellen.</span></div>
+            <div class="metric">
+              <strong>Reale Deployments</strong>
+              <span>Multi-VM-Umgebungen für echte Services, keine Spielzeug-Demos.</span>
+            </div>
+            <div class="metric">
+              <strong>Automation first</strong>
+              <span>Infrastruktur- und Applikations-Deployments sind auf Reproduzierbarkeit ausgelegt.</span>
+            </div>
+            <div class="metric">
+              <strong>Produktionsdenken</strong>
+              <span>Monitoring, Logs, Routing und Fehlertransparenz sind Teil des Designs.</span>
+            </div>
           </div>
         </div>
-        <aside class="hero-card">
-          <h3>Was Sie hier finden</h3>
+
+        <aside class="hero-card" aria-label="Berufliches Profil">
+          <h3>Was dieses Portfolio zeigt</h3>
           <div class="steps">
-            <div class="step"><strong>DevOps-Showcase</strong><br />Eine live betriebene Infrastruktur als Beleg für konkrete technische Fähigkeiten.</div>
-            <div class="step"><strong>E-Rechnungsprojekt</strong><br />Eine Produktdemo rund um digitale Rechnungen und Dokumentenautomatisierung.</div>
-            <div class="step"><strong>Klarer Einstiegspunkt</strong><br />Eine professionelle Startseite, getrennt von privaten und Vereinsdiensten.</div>
+            <div class="step">
+              <strong>Verantwortung für Infrastruktur</strong><br />
+              Linux-Systeme, Reverse Proxying, containerisierte Workloads und Deployment-Automatisierung.
+            </div>
+            <div class="step">
+              <strong>Operatives Denken</strong><br />
+              Service-Exposition, Monitoring, Log-Sammlung und praktisches Troubleshooting.
+            </div>
+            <div class="step">
+              <strong>Umsetzung realer Projekte</strong><br />
+              Anwendungen, die auf einer wiederverwendbaren Staging-/Production-Infrastruktur betrieben werden.
+            </div>
           </div>
         </aside>
       </div>
     </section>
 
     <section class="section-sm">
-      <div class="container grid-3">
-        <article class="card"><h3>Warum diese Domain existiert</h3><p>Sie bündelt eine klare professionelle Präsenz: seriöse Architektur zeigen, ein fachliches Projekt präsentieren und Besucher schnell zum richtigen Bereich führen.</p></article>
-        <article class="card"><h3>Für wen</h3><p>Recruiter, Unternehmen mit Bedarf an Linux-, DevOps- oder IAM-Profilen, technische Partner, Handwerker und Steuerberater mit Interesse an einer einfachen E-Rechnungs-Lösung.</p></article>
-        <article class="card"><h3>Navigation</h3><p>Der DevOps-Bereich dient als Portfolio. Der E-Rechnungs-Bereich dient als Produkt-Showcase. Private Dienste bleiben auf eigenen Subdomains isoliert.</p></article>
+      <div class="container grid-4">
+        <article class="card">
+          <h3>Zuverlässigkeit statt Lärm</h3>
+          <p>Ich bevorzuge klare und verständliche Systeme statt unnötiger Plattform-Komplexität.</p>
+        </article>
+        <article class="card">
+          <h3>Kontrollierte Exposition</h3>
+          <p>Ein zentrales Gateway, klare Routing-Regeln und eine explizite Veröffentlichung von Services.</p>
+        </article>
+        <article class="card">
+          <h3>Observability von Anfang an</h3>
+          <p>Metriken, Dashboards und Logs sind operative Anforderungen, keine nachträglichen Extras.</p>
+        </article>
+        <article class="card">
+          <h3>Wiederverwendbare Muster</h3>
+          <p>Projekte werden mit wiederholbaren Konventionen statt mit Einmalskripten ausgerollt.</p>
+        </article>
       </div>
     </section>
 
-    <section class="section" id="devops">
+    <section class="section" id="architecture">
       <div class="container">
-        <span class="eyebrow">DevOps-Showcase</span>
-        <h2 class="section-title">Eine Infrastruktur, die gleichzeitig eine reale Plattform und ein Portfolio ist.</h2>
-        <p class="section-lead">Hier geht es nicht um Folien. Es ist eine echte Umgebung, die Dienste hostet, Veröffentlichungsprozesse testet, Anwendungen betreibt und Architekturentscheidungen dokumentiert.</p>
+        <span class="eyebrow">Architektur</span>
+        <h2 class="section-title">Ein DevOps-Showcase, aufgebaut für reale Betriebsbedingungen.</h2>
+        <p class="section-lead">
+          Der Kern dieses Portfolios ist eine Staging-/Production-Infrastruktur, die Services kontrolliert ausrollt und veröffentlicht.
+          Die Architektur setzt auf Isolation, Klarheit und Wartbarkeit statt auf unnötige Orchestrierungskomplexität.
+        </p>
+
         <div class="split" style="margin-top: 2rem;">
           <article class="card">
-            <h3>Was ich hervorhebe</h3>
-            <ul><li>Deployment von Multi-VM-Umgebungen mit klarer Rollentrennung.</li><li>Reverse Proxy und sichere Exponierung von Webdiensten.</li><li>Automatisierung von Installation und Updates mit Ansible.</li><li>Observability: Logs, Metriken, Monitoring und Troubleshooting.</li><li>CI/CD zur Validierung und Härtung von Änderungen.</li><li>Ein operativer Ansatz statt einer rein theoretischen Demo.</li></ul>
-            <div class="tag-row">
-              <span class="tag">Linux</span><span class="tag">Ansible</span><span class="tag">Docker</span><span class="tag">Reverse Proxy</span><span class="tag">Monitoring</span><span class="tag">WireGuard</span><span class="tag">CI/CD</span><span class="tag">Proxmox</span>
-            </div>
-          </article>
-          <article class="card">
-            <h3>Referenzarchitektur</h3>
-            <div class="diagram">Internet
+            <h3>Topologie auf hoher Ebene</h3>
+            <div class="diagram" aria-label="Infrastrukturdiagramm">Internet
    |
    v
-[ Reverse Proxy / TLS ]
+[ Caddy Proxy VM ]
    |
-   +--> [ Homepage / Showcase ]
-   +--> [ E-invoicing Demo ]
-   +--> [ Personal Services ]
-   +--> [ Club / YunoHost ]
+   +--> lavallee.staging.local   --> [ Web-VM / Nginx-Container ]
+   +--> facturier.staging.local  --> [ App-VM / containerisierter Service ]
+   +--> weitere Projekt-Domains  --> [ dedizierte Projekt-VMs ]
 
-[ Ansible Control Node ] ----> [ Proxy VM ]
-           |                  [ App VM ]
-           |                  [ Monitoring VM ]
-           |                  [ Club VM ]
-           |
-           +--> CI/CD / validation / deployment
+[ Deployment-Steuerung ]
+   +--> Ansible-Inventories
+   +--> Projektdefinitionen
+   +--> Reproduzierbare Rollout-Logik
 
-[ Observability ]
-   +--> Logs
-   +--> Metrics
-   +--> Dashboards
+[ Monitoring-Stack ]
+   +--> Prometheus
+   +--> Grafana
+   +--> Loki / Promtail
 </div>
           </article>
-        </div>
-        <div class="grid-3" style="margin-top: 1.4rem;">
-          <article class="card"><h3>Projekt 1 · Multi-Service-Webplattform</h3><p>Eine gemeinsame Infrastruktur-Basis für private, Vereins- und professionelle Dienste mit klarer Trennung nach Subdomain und VM-Rolle.</p></article>
-          <article class="card"><h3>Projekt 2 · Automatisiertes Deployment</h3><p>Standardisierte Deployments mit wiederverwendbaren Rollen, sauberer Inventory-Struktur und Validierungs-Pipelines.</p></article>
-          <article class="card"><h3>Projekt 3 · Monitoring und Betrieb</h3><p>Technische Überwachung für mehr Sichtbarkeit, schnelleres Troubleshooting und dokumentiertes Systemverhalten.</p></article>
-        </div>
-        <div class="split" style="margin-top: 1.6rem;">
+
           <article class="card">
-            <h3>Was Sie mitnehmen sollten</h3>
-            <ol class="timeline"><li class="timeline-item"><strong>Das ist nicht nur ein Lab.</strong><br />Die Plattform wird als echter Einstiegspunkt für nützliche Dienste verwendet.</li><li class="timeline-item"><strong>Ich decke mehrere Schichten ab.</strong><br />System, Netzwerk, Reverse Proxy, Deployment, Troubleshooting, Security und Dokumentation.</li><li class="timeline-item"><strong>Ich arbeite zielorientiert.</strong><br />Im Fokus stehen Zuverlässigkeit, Architektur-Klarheit und die Fähigkeit, die Plattform weiterzuentwickeln.</li></ol>
-          </article>
-          <article class="card">
-            <h3>Nützliche Links</h3>
+            <h3>Warum dieses Design</h3>
             <ul>
-              <li><a href="https://github.com/sepp67/devops_staging_prod_infra" target="_blank" rel="noreferrer">GitHub</a></li>
-              <li><a href="mailto:info@lavallee.tech">info@lavallee.tech</a></li>
-              <li><a href="#facturier">E-Rechnung</a></li>
+              <li>Zentraler Reverse Proxy für kontrollierte Exposition und einfacheres Traffic-Management.</li>
+              <li>Isolation auf VM-Ebene, damit Services verständlich und betrieblich sicher bleiben.</li>
+              <li>Ansible-getriebene Deployment-Muster für Wiederholbarkeit und sauberes Onboarding neuer Projekte.</li>
+              <li>Integrierter Monitoring-Stack, weil Troubleshooting mit Sichtbarkeit beginnt.</li>
+              <li>Pragmatische Nutzung von Containern ohne unnötige zusätzliche Orchestrierungsschichten.</li>
             </ul>
           </article>
         </div>
       </div>
     </section>
 
-    <section class="section" id="facturier">
+    <section class="section" id="capabilities">
       <div class="container">
-        <span class="eyebrow">E-Rechnungsprojekt</span>
-        <h2 class="section-title">Eine fachliche Seite mit Fokus auf digitale Rechnungsstellung und einfache Nutzung.</h2>
-        <p class="section-lead">Das Projekt soll die Reibung für kleine Unternehmen reduzieren, die sich auf E-Rechnungen einstellen müssen. Ziel ist keine zusätzliche Komplexität, sondern ein klarer Ablauf: erstellen, konvertieren, prüfen und übermitteln.</p>
+        <span class="eyebrow">Kompetenzen</span>
+        <h2 class="section-title">Wofür ich Verantwortung übernehmen kann.</h2>
+        <p class="section-lead">
+          Dieses Portfolio soll praktisch und greifbar sein. Es zeigt, für welche Systeme und Verantwortungsbereiche ich End-to-End Ownership übernehmen kann – vom Deployment-Design bis zur operativen Sichtbarkeit.
+        </p>
+
         <div class="grid-3" style="margin-top: 2rem;">
-          <article class="card"><h3>Das Problem</h3><p>Viele Handwerker arbeiten noch mit einfachen Dokumenten und wenig Werkzeugunterstützung. Der Umstieg auf E-Rechnungen kann schnell als Belastung empfunden werden, wenn die Lösung zu schwer ist.</p></article>
-          <article class="card"><h3>Das Versprechen</h3><p>Eine verständliche Oberfläche, die Nutzer von der Rechnung bis zu einem strukturierten und übertragbaren Format führt – pragmatisch statt bürokratisch.</p></article>
-          <article class="card"><h3>Die Positionierung</h3><p>Ein Produkt mit Fokus auf Klarheit, Kompatibilität und Unterstützung realer Arbeitsabläufe von kleinen Unternehmen und Handwerkern.</p></article>
-        </div>
-        <div class="split" style="margin-top: 1.6rem;">
           <article class="card">
-            <h3>Der Nutzerablauf der App</h3>
-            <div class="steps"><div class="step">Der Nutzer erstellt eine Rechnung über eine einfache Oberfläche oder aus einem bestehenden Dokument.</div><div class="step">Die Daten werden strukturiert, geprüft und bei Bedarf ergänzt.</div><div class="step">Das Dokument wird in das erforderliche E-Rechnungsformat umgewandelt.</div><div class="step">Der Nutzer verfolgt den Versandstatus und behält eine klare Nachvollziehbarkeit.</div></div>
+            <h3>Linux-Infrastruktur</h3>
+            <p>Bereitstellung, Betrieb und Pflege Linux-basierter Serverumgebungen mit Fokus auf Stabilität und Klarheit.</p>
           </article>
           <article class="card">
-            <h3>Die Stärken dieses Tools</h3>
-            <ul><li>Usability für Nicht-Techniker.</li><li>Erstellung gesetzeskonformer Dokumente.</li><li>Kompatibel mit super_PDP. Die „Plateforme Agréée“ (PDP), die Ihre Daten nicht weiterverkauft.</li><li>Persönliche Betreuung in allen Phasen der gesetzlichen Anforderungen.</li><li>Ein einfacher Ablauf trotz regulatorischer Komplexität.</li></ul>
-            <div class="tag-row">
-              <span class="tag">e-invoicing</span><span class="tag">Factur-X</span><span class="tag">Artisans</span><span class="tag">PDF</span><span class="tag">Automation</span>
-            </div>
+            <h3>Deployment-Automatisierung</h3>
+            <p>Wiederverwendbare Automatisierungsmuster mit Ansible für Projekt-Onboarding, konsistente Konfiguration und reproduzierbare Rollouts.</p>
+          </article>
+          <article class="card">
+            <h3>Reverse Proxy & Routing</h3>
+            <p>Veröffentlichung von Services über ein zentrales Gateway mit klarer Domain-Zuordnung und kontrollierten Upstreams.</p>
+          </article>
+          <article class="card">
+            <h3>Containerisierte Services</h3>
+            <p>Packaging und Deployment von Anwendungen mit Docker innerhalb pragmatischer betrieblicher Grenzen.</p>
+          </article>
+          <article class="card">
+            <h3>Monitoring & Logging</h3>
+            <p>Metriken, Dashboards und Log-Pipelines für echtes Troubleshooting und klare Service-Sichtbarkeit.</p>
+          </article>
+          <article class="card">
+            <h3>Produktives Troubleshooting</h3>
+            <p>Debugging von Routing-Problemen, Service-Exposition, Logging-Pipelines und realem Betriebsverhalten.</p>
           </article>
         </div>
-        <div class="grid-2" style="margin-top: 1.5rem;">
-          <article class="card"><h3>Für wen ist diese App gedacht?</h3><ul><li>Für Geschäftsführer von KMUs, die nach einer einfachen und effizienten Lösung suchen. </li><li>Für Steuerberater oder Partner, die sich von der Seriosität des Ansatzes überzeugen möchten.</li></ul></article>
-          <article class="card"><h3>Sie wünschen weitere Informationen?</h3><ul><li><a href="http://localhost:8080/#facturier">Testen Sie den Rechnungssteller</a></li><li><a href="mailto:info@lavallee.tech?subject=Interesse%20am%20E-Rechnungsprojekt">Kontaktieren Sie uns per E-Mail</a></li></ul></article>
+
+        <div class="tag-row">
+          <span class="tag">Linux</span>
+          <span class="tag">Ansible</span>
+          <span class="tag">Docker</span>
+          <span class="tag">Caddy</span>
+          <span class="tag">Nginx</span>
+          <span class="tag">Prometheus</span>
+          <span class="tag">Grafana</span>
+          <span class="tag">Loki</span>
+          <span class="tag">Reverse Proxy</span>
+          <span class="tag">Observability</span>
         </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container split">
+        <article class="card">
+          <h3>Produktionsdenken</h3>
+          <ul>
+            <li>Zuverlässigkeit ist wichtiger als unnötige Raffinesse.</li>
+            <li>Operative Sichtbarkeit sollte existieren, bevor Incidents auftreten.</li>
+            <li>Klare Trennung von Verantwortlichkeiten schlägt unkontrolliertes Wachstum.</li>
+            <li>Einfache Architekturen lassen sich besser erklären, warten und vertrauen.</li>
+          </ul>
+        </article>
+        <article class="card">
+          <h3>Wofür diese Infrastruktur genutzt wird</h3>
+          <ul>
+            <li>Hosting realer Services hinter einem zentralen Gateway.</li>
+            <li>Validierung von Deployment-Mustern in Staging und Production.</li>
+            <li>Test von Monitoring- und Logging-Designs unter realistischen Bedingungen.</li>
+            <li>Wiederverwendbare Basis für mehrere Applikationsprojekte.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="projects">
+      <div class="container">
+        <span class="eyebrow">Projekte</span>
+        <h2 class="section-title">Anwendungen, die auf dieser Infrastruktur laufen.</h2>
+        <p class="section-lead">
+          Die folgenden Projekte stehen nicht im Zentrum des Portfolios. Sie zeigen, dass die Infrastruktur dafür ausgelegt ist, reale Workloads zu hosten, zu veröffentlichen und zu betreiben.
+        </p>
+
+        <div class="grid-3" style="margin-top: 2rem;">
+          <article class="card">
+            <h3>Facturier</h3>
+            <p>
+              Ein E-Invoicing-Projekt, das als reale Anwendung auf dieser Infrastruktur betrieben wird und containerisiertes Deployment, Routing über die Proxy-Schicht sowie integrationsorientiertes Denken demonstriert.
+            </p>
+            <a class="btn btn-ghost" href="https://facturier.lavallee.tech" target="_blank" rel="noreferrer">Projekt ansehen</a>
+          </article>
+          <article class="card">
+            <h3>lavallee.tech</h3>
+            <p>
+              Eine mehrsprachige statische Website, die mit derselben Staging-/Production-Logik ausgerollt wird und sowohl als Portfolio als auch als Deployment-Showcase dient.
+            </p>
+          </article>
+          <article class="card">
+            <h3>Zukünftige Projekte</h3>
+            <p>
+              Die Infrastruktur ist bewusst wiederverwendbar aufgebaut, damit zusätzliche Services mit demselben Betriebsmodell onboardet werden können.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-sm">
+      <div class="container grid-3">
+        <article class="card">
+          <h3>Standort</h3>
+          <p>Wohnhaft in Frankreich. Offen für Positionen in Deutschland, der Schweiz sowie für Remote- und Hybrid-Modelle.</p>
+        </article>
+        <article class="card">
+          <h3>Sprachen</h3>
+          <p>Auf dieser Website sind englische, deutsche und französische Versionen für internationale Bewerbungen verfügbar.</p>
+        </article>
+        <article class="card">
+          <h3>Einsatz in Bewerbungen</h3>
+          <p>Diese Website ist als praktisches Portfolio für Infrastruktur- und IT-Kompetenzen konzipiert.</p>
+        </article>
       </div>
     </section>
 
@@ -170,12 +647,18 @@
       <div class="container">
         <div class="panel cta">
           <div>
-            <h2 style="margin:0 0 .4rem;">Eine Domain, eine DevOps-Plattform und vieles mehr</h2>
-            <p>Diese Website dient als Einstiegsportal und als meine Hosting-Plattform. Sie richtet sich an Personalvermittler, Personen, die einen DevOps-/Linux-Spezialisten suchen, sowie an diejenigen, die einen Anbieter für digitale Rechnungsstellung suchen.</p>
+            <h2 style="margin:0 0 .4rem;">Auf der Suche nach einer DevOps-/Linux-Rolle mit echter Produktionsverantwortung.</h2>
+            <p>
+              Wenn Sie für Infrastruktur, Automatisierung, Linux-Betrieb, Observability oder Plattformverantwortung einstellen,
+              soll dieses Portfolio zeigen, wie ich denke und wofür ich Verantwortung übernehmen kann.
+            </p>
           </div>
           <div class="hero-actions" style="margin-top:0;">
-            <a class="btn btn-primary" href="mailto:info@lavallee.tech">Kontakt aufnehmen</a>
-            <a class="btn btn-secondary" href="https://github.com/sepp67/devops_staging_prod_infra" target="_blank" rel="noreferrer">GitHub</a>
+            <a class="btn btn-primary" href="mailto:info@lavallee.tech">Kontakt</a>
+            <a class="btn btn-secondary"
+               href="mailto:info@lavallee.tech?subject=CV-Anfrage">
+              CV anfragen
+            </a>
           </div>
         </div>
       </div>
@@ -186,12 +669,13 @@
     <div class="container footer-grid">
       <div>
         <strong>lavallee.tech</strong><br />
-        Infrastruktur, Automatisierung, Linux, Webprojekte und E-Rechnung.
+        Produktionsreifes DevOps-Portfolio mit Fokus auf Infrastruktur, Automatisierung und operatives Vertrauen.
       </div>
       <div class="footer-links">
         <a href="#home">Start</a>
-        <a href="#devops">DevOps</a>
-        <a href="#facturier">E-Rechnung</a>
+        <a href="#architecture">Architektur</a>
+        <a href="#capabilities">Kompetenzen</a>
+        <a href="#projects">Projekte</a>
         <a href="mailto:info@lavallee.tech">Kontakt</a>
       </div>
     </div>

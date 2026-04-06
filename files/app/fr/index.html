@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>lavallee.tech · Production-ready DevOps Infrastructure</title>
-  <meta name="description" content="lavallee.tech is a DevOps portfolio focused on production-ready Linux infrastructure, automation, observability, and real-world deployments." />
+  <title>lavallee.tech · Infrastructure DevOps prête pour la production</title>
+  <meta name="description" content="lavallee.tech est un portfolio DevOps centré sur une infrastructure Linux prête pour la production, l’automatisation, l’observabilité et des déploiements réels." />
   <link rel="preload" href="/assets/logo.png" as="image" />
   <link rel="alternate" hreflang="en" href="https://lavallee.tech/" />
   <link rel="alternate" hreflang="de" href="https://lavallee.tech/de/" />
@@ -265,38 +265,6 @@
       gap: 1.6rem;
       align-items: start;
     }
-    .timeline {
-      position: relative;
-      padding-left: 1rem;
-      margin: 0;
-      list-style: none;
-    }
-    .timeline::before {
-      content: "";
-      position: absolute;
-      left: 0;
-      top: .4rem;
-      bottom: .4rem;
-      width: 2px;
-      background: linear-gradient(var(--accent), transparent);
-    }
-    .timeline-item {
-      position: relative;
-      padding-left: 1rem;
-      margin-bottom: 1.2rem;
-    }
-    .timeline-item::before {
-      content: "";
-      position: absolute;
-      left: -.34rem;
-      top: .45rem;
-      width: .7rem;
-      height: .7rem;
-      border-radius: 50%;
-      background: var(--accent);
-      box-shadow: 0 0 0 6px rgba(110,168,254,.12);
-    }
-
     .diagram {
       padding: 1.35rem;
       overflow-x: auto;
@@ -409,26 +377,26 @@
 <body>
   <header>
     <div class="container nav">
-      <a class="brand" href="#top" aria-label="Back to top">
+      <a class="brand" href="#top" aria-label="Retour en haut de page">
         <span class="brand-logo-shell">
           <img src="/assets/logo.png" alt="lavallee.tech" class="logo" />
         </span>
         <span class="brand-text">lavallee.tech</span>
       </a>
-      <nav class="nav-links" aria-label="Main navigation">
-        <a href="#home">Home</a>
+      <nav class="nav-links" aria-label="Navigation principale">
+        <a href="#home">Accueil</a>
         <a href="#architecture">Architecture</a>
-        <a href="#capabilities">Capabilities</a>
-        <a href="#projects">Projects</a>
+        <a href="#capabilities">Compétences</a>
+        <a href="#projects">Projets</a>
         <a href="#contact">Contact</a>
-        <span class="lang-switch" aria-label="Language switcher">
-          <a href="/" class="active" aria-current="page">EN</a>
+        <span class="lang-switch" aria-label="Sélecteur de langue">
+          <a href="/">EN</a>
           <a href="/de/">DE</a>
-          <a href="/fr/">FR</a>
+          <a href="/fr/" class="active" aria-current="page">FR</a>
         </span>
         <a class="btn btn-secondary"
-           href="mailto:info@lavallee.tech?subject=CV%20Request">
-          Request CV
+           href="mailto:info@lavallee.tech?subject=Demande%20de%20CV">
+          Demander le CV
         </a>
       </nav>
     </div>
@@ -438,47 +406,47 @@
     <section class="hero" id="home">
       <div class="container hero-grid">
         <div>
-          <span class="eyebrow">Production-ready DevOps portfolio</span>
-          <h1>You can trust me with production systems.</h1>
+          <span class="eyebrow">Portfolio DevOps orienté production</span>
+          <h1>Vous pouvez me confier des systèmes de production.</h1>
           <p>
-            I design, deploy and operate production-ready Linux infrastructure for real-world applications.
-            My focus is simple: automation, controlled exposure, observability, and architectures that stay maintainable under real operating conditions.
+            Je conçois, déploie et exploite des infrastructures Linux prêtes pour la production pour des applications réelles.
+            Mon approche est simple : automatisation, exposition contrôlée des services, observabilité et architectures qui restent maintenables dans des conditions d’exploitation réelles.
           </p>
           <div class="hero-actions">
-            <a class="btn btn-primary" href="#architecture">Explore the architecture</a>
-            <a class="btn btn-secondary" href="https://github.com/sepp67" target="_blank" rel="noreferrer">View GitHub</a>
-            <a class="btn btn-ghost" href="mailto:info@lavallee.tech">Get in touch</a>
+            <a class="btn btn-primary" href="#architecture">Découvrir l’architecture</a>
+            <a class="btn btn-secondary" href="https://github.com/sepp67" target="_blank" rel="noreferrer">Voir GitHub</a>
+            <a class="btn btn-ghost" href="mailto:info@lavallee.tech">Me contacter</a>
           </div>
           <div class="metrics">
             <div class="metric">
-              <strong>Real deployments</strong>
-              <span>Multi-VM environments used to host actual services, not toy demos.</span>
+              <strong>Déploiements réels</strong>
+              <span>Des environnements multi-VM utilisés pour héberger de vrais services, pas des démos artificielles.</span>
             </div>
             <div class="metric">
               <strong>Automation first</strong>
-              <span>Infrastructure and application deployment built around reproducibility.</span>
+              <span>Le déploiement de l’infrastructure et des applications repose sur la reproductibilité.</span>
             </div>
             <div class="metric">
-              <strong>Production mindset</strong>
-              <span>Monitoring, logs, routing and failure visibility are part of the design.</span>
+              <strong>Vision production</strong>
+              <span>Monitoring, logs, routage et visibilité sur les pannes font partie du design.</span>
             </div>
           </div>
         </div>
 
-        <aside class="hero-card" aria-label="Professional summary">
-          <h3>What this portfolio shows</h3>
+        <aside class="hero-card" aria-label="Résumé professionnel">
+          <h3>Ce que montre ce portfolio</h3>
           <div class="steps">
             <div class="step">
-              <strong>Infrastructure ownership</strong><br />
-              Linux systems, reverse proxying, containerized workloads and deployment automation.
+              <strong>Ownership infrastructure</strong><br />
+              Systèmes Linux, reverse proxy, workloads conteneurisés et automatisation des déploiements.
             </div>
             <div class="step">
-              <strong>Operational thinking</strong><br />
-              Service exposure, monitoring, log collection and practical troubleshooting.
+              <strong>Réflexe opérationnel</strong><br />
+              Exposition des services, supervision, collecte de logs et troubleshooting concret.
             </div>
             <div class="step">
-              <strong>Real project execution</strong><br />
-              Applications deployed on top of a reusable staging / production infrastructure.
+              <strong>Exécution de projets réels</strong><br />
+              Des applications déployées sur une infrastructure staging / production réutilisable.
             </div>
           </div>
         </aside>
@@ -488,20 +456,20 @@
     <section class="section-sm">
       <div class="container grid-4">
         <article class="card">
-          <h3>Reliability over noise</h3>
-          <p>I prefer clean and understandable systems over unnecessary platform complexity.</p>
+          <h3>Fiabilité avant le bruit</h3>
+          <p>Je privilégie des systèmes clairs et compréhensibles plutôt qu’une complexité de plateforme inutile.</p>
         </article>
         <article class="card">
-          <h3>Controlled exposure</h3>
-          <p>A central gateway, clear routing rules and explicit service publication.</p>
+          <h3>Exposition contrôlée</h3>
+          <p>Une gateway centrale, des règles de routage explicites et une publication maîtrisée des services.</p>
         </article>
         <article class="card">
-          <h3>Observability from day one</h3>
-          <p>Metrics, dashboards and logs are treated as operational requirements.</p>
+          <h3>Observabilité dès le départ</h3>
+          <p>Les métriques, dashboards et logs sont considérés comme des exigences opérationnelles.</p>
         </article>
         <article class="card">
-          <h3>Reusable patterns</h3>
-          <p>Projects are deployed with repeatable conventions rather than one-off scripts.</p>
+          <h3>Patterns réutilisables</h3>
+          <p>Les projets sont déployés selon des conventions répétables, pas avec des scripts jetables.</p>
         </article>
       </div>
     </section>
@@ -509,30 +477,30 @@
     <section class="section" id="architecture">
       <div class="container">
         <span class="eyebrow">Architecture</span>
-        <h2 class="section-title">A DevOps showcase built around real operating constraints.</h2>
+        <h2 class="section-title">Un showcase DevOps construit autour de contraintes d’exploitation réelles.</h2>
         <p class="section-lead">
-          The core of this portfolio is a staging / production infrastructure designed to deploy services in a controlled way.
-          The architecture favors isolation, clarity and maintainability over unnecessary orchestration complexity.
+          Le cœur de ce portfolio est une infrastructure staging / production conçue pour déployer les services de manière contrôlée.
+          L’architecture privilégie l’isolation, la lisibilité et la maintenabilité plutôt qu’une complexité d’orchestration inutile.
         </p>
 
         <div class="split" style="margin-top: 2rem;">
           <article class="card">
-            <h3>High-level topology</h3>
-            <div class="diagram" aria-label="Infrastructure diagram">Internet
+            <h3>Topologie de haut niveau</h3>
+            <div class="diagram" aria-label="Diagramme d’infrastructure">Internet
    |
    v
-[ Caddy Proxy VM ]
+[ VM Proxy Caddy ]
    |
-   +--> lavallee.staging.local   --> [ Web VM / Nginx container ]
-   +--> facturier.staging.local  --> [ App VM / containerized service ]
-   +--> other project domains    --> [ dedicated project VMs ]
+   +--> lavallee.staging.local   --> [ VM Web / conteneur Nginx ]
+   +--> facturier.staging.local  --> [ VM App / service conteneurisé ]
+   +--> autres domaines projets  --> [ VMs projets dédiées ]
 
-[ Deployment control ]
-   +--> Ansible inventories
-   +--> Project declarations
-   +--> Reproducible rollout logic
+[ Contrôle du déploiement ]
+   +--> Inventaires Ansible
+   +--> Déclarations de projets
+   +--> Logique de rollout reproductible
 
-[ Monitoring stack ]
+[ Stack de monitoring ]
    +--> Prometheus
    +--> Grafana
    +--> Loki / Promtail
@@ -540,13 +508,13 @@
           </article>
 
           <article class="card">
-            <h3>Why this design</h3>
+            <h3>Pourquoi ce design</h3>
             <ul>
-              <li>Centralized reverse proxy for controlled exposure and simpler traffic management.</li>
-              <li>VM-level isolation to keep services understandable and operationally safe.</li>
-              <li>Ansible-driven deployment patterns for repeatability and clean project onboarding.</li>
-              <li>Integrated monitoring stack because troubleshooting starts with visibility.</li>
-              <li>Pragmatic container usage without introducing unnecessary orchestration layers.</li>
+              <li>Un reverse proxy centralisé pour une exposition contrôlée et une gestion du trafic plus simple.</li>
+              <li>Une isolation au niveau VM pour garder des services lisibles et sûrs en exploitation.</li>
+              <li>Des patterns de déploiement pilotés par Ansible pour la répétabilité et l’onboarding propre des projets.</li>
+              <li>Une stack de monitoring intégrée, car le troubleshooting commence par la visibilité.</li>
+              <li>Un usage pragmatique des conteneurs sans ajouter de couches d’orchestration inutiles.</li>
             </ul>
           </article>
         </div>
@@ -555,37 +523,36 @@
 
     <section class="section" id="capabilities">
       <div class="container">
-        <span class="eyebrow">Capabilities</span>
-        <h2 class="section-title">What I can take ownership of.</h2>
+        <span class="eyebrow">Compétences</span>
+        <h2 class="section-title">Ce que je peux prendre en charge.</h2>
         <p class="section-lead">
-          This portfolio is meant to be practical. It shows the kind of systems and responsibilities I can own end to end,
-          from deployment design to operational visibility.
+          Ce portfolio se veut concret. Il montre le type de systèmes et de responsabilités que je peux assumer de bout en bout, du design de déploiement à la visibilité opérationnelle.
         </p>
 
         <div class="grid-3" style="margin-top: 2rem;">
           <article class="card">
-            <h3>Linux infrastructure</h3>
-            <p>Provisioning, operating and maintaining Linux-based server environments with a focus on stability and clarity.</p>
+            <h3>Infrastructure Linux</h3>
+            <p>Provisioning, exploitation et maintien en condition d’environnements serveurs Linux avec un focus sur la stabilité et la clarté.</p>
           </article>
           <article class="card">
-            <h3>Deployment automation</h3>
-            <p>Reusable automation patterns with Ansible for project onboarding, configuration consistency and repeatable rollout.</p>
+            <h3>Automatisation des déploiements</h3>
+            <p>Patterns d’automatisation réutilisables avec Ansible pour l’onboarding des projets, la cohérence de configuration et des rollouts reproductibles.</p>
           </article>
           <article class="card">
-            <h3>Reverse proxy & routing</h3>
-            <p>Service publication through a central gateway with clear domain mapping and upstream control.</p>
+            <h3>Reverse proxy & routage</h3>
+            <p>Publication des services via une gateway centrale avec mapping explicite des domaines et contrôle des upstreams.</p>
           </article>
           <article class="card">
-            <h3>Containerized services</h3>
-            <p>Application packaging and deployment using Docker with pragmatic operational boundaries.</p>
+            <h3>Services conteneurisés</h3>
+            <p>Packaging et déploiement d’applications avec Docker dans un cadre opérationnel pragmatique.</p>
           </article>
           <article class="card">
             <h3>Monitoring & logging</h3>
-            <p>Metrics, dashboards and log collection pipelines to support real troubleshooting and service visibility.</p>
+            <p>Métriques, dashboards et pipelines de logs pour un vrai troubleshooting et une bonne visibilité des services.</p>
           </article>
           <article class="card">
-            <h3>Production troubleshooting</h3>
-            <p>Debugging routing issues, service exposure, logging pipelines and operational behavior under real conditions.</p>
+            <h3>Troubleshooting production</h3>
+            <p>Débogage des problèmes de routage, d’exposition de services, de pipelines de logs et de comportement réel en exploitation.</p>
           </article>
         </div>
 
@@ -599,7 +566,7 @@
           <span class="tag">Grafana</span>
           <span class="tag">Loki</span>
           <span class="tag">Reverse Proxy</span>
-          <span class="tag">Observability</span>
+          <span class="tag">Observabilité</span>
         </div>
       </div>
     </section>
@@ -607,21 +574,21 @@
     <section class="section">
       <div class="container split">
         <article class="card">
-          <h3>Production mindset</h3>
+          <h3>Réflexe production</h3>
           <ul>
-            <li>Reliability matters more than unnecessary sophistication.</li>
-            <li>Operational visibility should exist before incidents happen.</li>
-            <li>Clear separation of concerns beats accidental sprawl.</li>
-            <li>Simple architectures are easier to explain, maintain and trust.</li>
+            <li>La fiabilité compte plus qu’une sophistication inutile.</li>
+            <li>La visibilité opérationnelle doit exister avant les incidents.</li>
+            <li>Une séparation claire des responsabilités vaut mieux qu’une croissance anarchique.</li>
+            <li>Les architectures simples sont plus faciles à expliquer, maintenir et fiabiliser.</li>
           </ul>
         </article>
         <article class="card">
-          <h3>What this infrastructure is used for</h3>
+          <h3>À quoi sert cette infrastructure</h3>
           <ul>
-            <li>Hosting real services behind a centralized gateway.</li>
-            <li>Validating deployment patterns across staging and production.</li>
-            <li>Testing monitoring and logging design in realistic scenarios.</li>
-            <li>Serving as a reusable base for multiple application projects.</li>
+            <li>Héberger de vrais services derrière une gateway centralisée.</li>
+            <li>Valider des patterns de déploiement en staging et en production.</li>
+            <li>Tester le design du monitoring et du logging dans des scénarios réalistes.</li>
+            <li>Servir de base réutilisable pour plusieurs projets applicatifs.</li>
           </ul>
         </article>
       </div>
@@ -629,31 +596,30 @@
 
     <section class="section" id="projects">
       <div class="container">
-        <span class="eyebrow">Projects</span>
-        <h2 class="section-title">Applications running on this infrastructure.</h2>
+        <span class="eyebrow">Projets</span>
+        <h2 class="section-title">Des applications qui tournent sur cette infrastructure.</h2>
         <p class="section-lead">
-          The projects below are not the center of the portfolio. They are proof that the infrastructure is designed to host, expose and operate real workloads.
+          Les projets ci-dessous ne sont pas le centre du portfolio. Ils prouvent que l’infrastructure est conçue pour héberger, exposer et exploiter de vraies charges de travail.
         </p>
 
         <div class="grid-3" style="margin-top: 2rem;">
           <article class="card">
             <h3>Facturier</h3>
             <p>
-              An e-invoicing project deployed as a real application on top of this infrastructure, demonstrating containerized deployment,
-              routing through the proxy layer, and integration-oriented thinking.
+              Un projet de e-invoicing déployé comme application réelle sur cette infrastructure, qui démontre un déploiement conteneurisé, un routage via la couche proxy et une logique orientée intégration.
             </p>
-            <a class="btn btn-ghost" href="https://facturier.lavallee.tech" target="_blank" rel="noreferrer">View project</a>
+            <a class="btn btn-ghost" href="https://facturier.lavallee.tech" target="_blank" rel="noreferrer">Voir le projet</a>
           </article>
           <article class="card">
             <h3>lavallee.tech</h3>
             <p>
-              A multilingual static website deployed through the same staging / production logic, serving as both portfolio and deployment showcase.
+              Un site statique multilingue déployé avec la même logique staging / production, servant à la fois de portfolio et de showcase de déploiement.
             </p>
           </article>
           <article class="card">
-            <h3>Future projects</h3>
+            <h3>Projets à venir</h3>
             <p>
-              The infrastructure is intentionally reusable so that additional services can be onboarded with the same operational model.
+              L’infrastructure est volontairement réutilisable afin d’intégrer d’autres services avec le même modèle opérationnel.
             </p>
           </article>
         </div>
@@ -663,16 +629,16 @@
     <section class="section-sm">
       <div class="container grid-3">
         <article class="card">
-          <h3>Location</h3>
-          <p>Based in France. Open to Germany, Switzerland, remote and hybrid opportunities.</p>
+          <h3>Localisation</h3>
+          <p>Basé en France. Ouvert aux opportunités en Allemagne, en Suisse, ainsi qu’aux postes remote ou hybrides.</p>
         </article>
         <article class="card">
-          <h3>Languages</h3>
-          <p>English, German and French versions are available on this site for international applications.</p>
+          <h3>Langues</h3>
+          <p>Des versions anglaise, allemande et française sont disponibles sur ce site pour accompagner les candidatures internationales.</p>
         </article>
         <article class="card">
-          <h3>Use in applications</h3>
-          <p>This website is designed to support job applications as a practical portfolio of infrastructure and IT skills.</p>
+          <h3>Usage en candidature</h3>
+          <p>Ce site est conçu pour soutenir des candidatures comme portfolio concret de mes compétences en infrastructure et en IT.</p>
         </article>
       </div>
     </section>
@@ -681,17 +647,17 @@
       <div class="container">
         <div class="panel cta">
           <div>
-            <h2 style="margin:0 0 .4rem;">Looking for a DevOps / Linux role with real production ownership.</h2>
+            <h2 style="margin:0 0 .4rem;">À la recherche d’un poste DevOps / Linux avec une vraie responsabilité de production.</h2>
             <p>
-              If you are hiring for infrastructure, automation, Linux operations, observability or platform responsibilities,
-              this portfolio is meant to show how I think and what I can own.
+              Si vous recrutez pour des sujets d’infrastructure, d’automatisation, d’exploitation Linux, d’observabilité ou de responsabilités plateforme,
+              ce portfolio est conçu pour montrer ma manière de penser et ce que je peux prendre en charge.
             </p>
           </div>
           <div class="hero-actions" style="margin-top:0;">
-            <a class="btn btn-primary" href="mailto:info@lavallee.tech">Contact me</a>
+            <a class="btn btn-primary" href="mailto:info@lavallee.tech">Me contacter</a>
             <a class="btn btn-secondary"
-               href="mailto:info@lavallee.tech?subject=CV%20Request">
-              Request CV
+               href="mailto:info@lavallee.tech?subject=Demande%20de%20CV">
+              Demander le CV
             </a>
           </div>
         </div>
@@ -703,13 +669,13 @@
     <div class="container footer-grid">
       <div>
         <strong>lavallee.tech</strong><br />
-        Production-ready DevOps portfolio focused on infrastructure, automation and operational trust.
+        Portfolio DevOps prêt pour la production, centré sur l’infrastructure, l’automatisation et la confiance opérationnelle.
       </div>
       <div class="footer-links">
-        <a href="#home">Home</a>
+        <a href="#home">Accueil</a>
         <a href="#architecture">Architecture</a>
-        <a href="#capabilities">Capabilities</a>
-        <a href="#projects">Projects</a>
+        <a href="#capabilities">Compétences</a>
+        <a href="#projects">Projets</a>
         <a href="mailto:info@lavallee.tech">Contact</a>
       </div>
     </div>
