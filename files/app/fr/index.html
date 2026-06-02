@@ -1,664 +1,257 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>lavallee.tech · Infrastructure DevOps prête pour la production</title>
-  <meta name="description" content="lavallee.tech est un portfolio DevOps centré sur une infrastructure Linux prête pour la production, l’automatisation, l’observabilité et des déploiements réels." />
-  <link rel="preload" href="/assets/logo.png" as="image" />
-  <link rel="alternate" hreflang="en" href="https://lavallee.tech/" />
-  <link rel="alternate" hreflang="de" href="https://lavallee.tech/de/" />
-  <link rel="alternate" hreflang="fr" href="https://lavallee.tech/fr/" />
-  <link rel="alternate" hreflang="x-default" href="https://lavallee.tech/" />
-  <style>
-    :root {
-      --bg: #0b1220;
-      --panel: #121a2b;
-      --panel-2: #18233a;
-      --text: #edf2f7;
-      --muted: #a7b3c9;
-      --line: #2a3856;
-      --accent: #6ea8fe;
-      --accent-2: #8ef0c1;
-      --max: 1180px;
-      --radius: 18px;
-      --shadow: 0 18px 50px rgba(0,0,0,.28);
-    }
-
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body {
-      margin: 0;
-      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background:
-        radial-gradient(circle at top right, rgba(110,168,254,.16), transparent 28%),
-        radial-gradient(circle at top left, rgba(142,240,193,.10), transparent 22%),
-        var(--bg);
-      color: var(--text);
-      line-height: 1.6;
-    }
-
-    a { color: inherit; text-decoration: none; }
-    img { max-width: 100%; display: block; }
-    .container { width: min(var(--max), calc(100% - 2rem)); margin: 0 auto; }
-    .section { padding: 76px 0; }
-    .section-sm { padding: 56px 0; }
-    .eyebrow {
-      display: inline-block;
-      padding: .35rem .75rem;
-      border: 1px solid rgba(110,168,254,.35);
-      border-radius: 999px;
-      color: var(--accent);
-      font-size: .88rem;
-      letter-spacing: .02em;
-      background: rgba(110,168,254,.08);
-    }
-    .section-title {
-      margin: 16px 0 12px;
-      font-size: clamp(1.9rem, 2vw + 1rem, 3.1rem);
-      line-height: 1.1;
-    }
-    .section-lead {
-      max-width: 860px;
-      color: var(--muted);
-      font-size: 1.05rem;
-    }
-
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      backdrop-filter: blur(16px);
-      background: rgba(11,18,32,.74);
-      border-bottom: 1px solid rgba(255,255,255,.06);
-    }
-    .nav {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      min-height: 82px;
-      gap: 1rem;
-    }
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: .9rem;
-      font-weight: 700;
-      letter-spacing: .01em;
-      min-width: 0;
-    }
-    .brand-logo-shell {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: .34rem .48rem;
-      min-height: 64px;
-      border-radius: 14px;
-      background: rgba(255,255,255,.96);
-      box-shadow: 0 6px 18px rgba(0, 0, 0, .22);
-      flex-shrink: 0;
-    }
-    .logo {
-      display: block;
-      height: 52px;
-      width: auto;
-      max-width: none;
-    }
-    .brand-text {
-      font-size: 1.08rem;
-      color: var(--text);
-      white-space: nowrap;
-    }
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      flex-wrap: wrap;
-      justify-content: flex-end;
-    }
-    .nav-links a {
-      color: var(--muted);
-      font-size: .96rem;
-    }
-    .nav-links a:hover,
-    .nav-links a:focus-visible { color: var(--text); }
-    .lang-switch {
-      display: inline-flex;
-      align-items: center;
-      gap: .4rem;
-      padding: .25rem;
-      border-radius: 999px;
-      background: rgba(255,255,255,.04);
-      border: 1px solid rgba(255,255,255,.08);
-    }
-    .lang-switch a {
-      padding: .4rem .7rem;
-      border-radius: 999px;
-      font-size: .88rem;
-    }
-    .lang-switch a.active {
-      color: white;
-      background: rgba(110,168,254,.25);
-      border: 1px solid rgba(110,168,254,.25);
-    }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: .55rem;
-      padding: .92rem 1.2rem;
-      border-radius: 12px;
-      border: 1px solid transparent;
-      font-weight: 600;
-      transition: transform .15s ease, border-color .15s ease, background .15s ease;
-      cursor: pointer;
-    }
-    .btn:hover { transform: translateY(-1px); }
-    .btn-primary {
-      background: linear-gradient(135deg, var(--accent), #528ef1);
-      color: white;
-      box-shadow: 0 14px 28px rgba(110,168,254,.25);
-    }
-    .btn-secondary {
-      background: rgba(255,255,255,.03);
-      color: var(--text);
-      border-color: rgba(255,255,255,.12);
-    }
-    .btn-ghost {
-      background: transparent;
-      border-color: rgba(255,255,255,.12);
-      color: var(--muted);
-    }
-
-    .hero { padding: 84px 0 60px; }
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 1.2fr .8fr;
-      gap: 2rem;
-      align-items: center;
-    }
-    .hero h1 {
-      margin: 18px 0 16px;
-      font-size: clamp(2.5rem, 4vw, 4.9rem);
-      line-height: 1.02;
-      letter-spacing: -.03em;
-      max-width: 850px;
-    }
-    .hero p {
-      max-width: 760px;
-      color: var(--muted);
-      font-size: 1.12rem;
-    }
-    .hero-actions {
-      display: flex;
-      gap: .9rem;
-      flex-wrap: wrap;
-      margin-top: 1.5rem;
-    }
-    .hero-card,
-    .card,
-    .panel {
-      background: linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.02));
-      border: 1px solid rgba(255,255,255,.08);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-    }
-    .hero-card { padding: 1.35rem; }
-    .hero-card h3 { margin-top: 0; }
-
-    .metrics {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1rem;
-      margin-top: 1.4rem;
-    }
-    .metric {
-      padding: 1rem;
-      border-radius: 14px;
-      background: rgba(255,255,255,.03);
-      border: 1px solid rgba(255,255,255,.06);
-    }
-    .metric strong {
-      display: block;
-      font-size: 1.35rem;
-      margin-bottom: .2rem;
-    }
-    .metric span {
-      color: var(--muted);
-      font-size: .95rem;
-    }
-
-    .grid-2, .grid-3, .grid-4 {
-      display: grid;
-      gap: 1.25rem;
-    }
-    .grid-2 { grid-template-columns: repeat(2, 1fr); }
-    .grid-3 { grid-template-columns: repeat(3, 1fr); }
-    .grid-4 { grid-template-columns: repeat(4, 1fr); }
-
-    .card { padding: 1.35rem; }
-    .card h3, .card h4 { margin-top: 0; }
-    .card p, .card li { color: var(--muted); }
-    .card ul {
-      padding-left: 1.1rem;
-      margin-bottom: 0;
-    }
-    .tag-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: .5rem;
-      margin-top: 1rem;
-    }
-    .tag {
-      padding: .42rem .68rem;
-      border-radius: 999px;
-      font-size: .88rem;
-      background: rgba(110,168,254,.08);
-      border: 1px solid rgba(110,168,254,.18);
-      color: #cfe1ff;
-    }
-
-    .split {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1.6rem;
-      align-items: start;
-    }
-    .diagram {
-      padding: 1.35rem;
-      overflow-x: auto;
-      font-family: "JetBrains Mono", "Fira Code", monospace;
-      font-size: .92rem;
-      color: #d8e5ff;
-      background: #0e1627;
-      border-radius: 16px;
-      border: 1px solid rgba(255,255,255,.08);
-      white-space: pre;
-    }
-
-    .steps {
-      counter-reset: step;
-      display: grid;
-      gap: 1rem;
-    }
-    .step {
-      padding: 1rem 1rem 1rem 4rem;
-      position: relative;
-      border-radius: 14px;
-      background: rgba(255,255,255,.03);
-      border: 1px solid rgba(255,255,255,.08);
-    }
-    .step::before {
-      counter-increment: step;
-      content: counter(step);
-      position: absolute;
-      left: 1rem;
-      top: 1rem;
-      width: 2.2rem;
-      height: 2.2rem;
-      display: grid;
-      place-items: center;
-      border-radius: 50%;
-      font-weight: 700;
-      color: white;
-      background: linear-gradient(135deg, var(--accent), #4d7fe0);
-    }
-
-    .cta {
-      padding: 1.6rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 1rem;
-      flex-wrap: wrap;
-    }
-    .cta p { margin: 0; color: var(--muted); }
-
-    footer {
-      padding: 28px 0 60px;
-      color: var(--muted);
-      border-top: 1px solid rgba(255,255,255,.08);
-    }
-    .footer-grid {
-      display: grid;
-      grid-template-columns: 1fr auto;
-      gap: 1rem;
-      align-items: center;
-    }
-    .footer-links {
-      display: flex;
-      gap: 1rem;
-      flex-wrap: wrap;
-    }
-
-    @media (max-width: 980px) {
-      .hero-grid,
-      .split,
-      .grid-2,
-      .grid-3,
-      .grid-4 {
-        grid-template-columns: 1fr;
-      }
-      .metrics {
-        grid-template-columns: 1fr;
-      }
-      .footer-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    @media (max-width: 900px) {
-      .brand-text { display: none; }
-    }
-
-    @media (max-width: 768px) {
-      .brand-logo-shell {
-        min-height: 52px;
-        padding: .25rem .4rem;
-        border-radius: 12px;
-      }
-      .logo { height: 42px; }
-    }
-
-    @media (max-width: 680px) {
-      .nav {
-        flex-direction: column;
-        align-items: stretch;
-        padding: .8rem 0;
-      }
-      .nav-links {
-        justify-content: space-between;
-      }
-      .hero { padding-top: 42px; }
-    }
-  </style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>lavallee.tech — Infrastructure Open Source</title>
+  <meta name="description" content="Infrastructure Linux auto-hébergée : Proxmox, Docker, Ansible, monitoring, production/staging et documentation d’ingénierie.">
+  <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
   <header>
     <div class="container nav">
-      <a class="brand" href="#top" aria-label="Retour en haut de page">
-        <span class="brand-logo-shell">
-          <img src="/assets/logo.png" alt="lavallee.tech" class="logo" />
-        </span>
-        <span class="brand-text">lavallee.tech</span>
+      <a class="brand" href="#top" aria-label="lavallee.tech home">
+        <span>lavallee.tech</span>
+        <span>Open Source Infrastructure</span>
       </a>
+
       <nav class="nav-links" aria-label="Navigation principale">
-        <a href="#home">Accueil</a>
-        <a href="#architecture">Architecture</a>
-        <a href="#capabilities">Compétences</a>
+        <a href="#infrastructure">Infrastructure</a>
         <a href="#projects">Projets</a>
+        <a href="#notes">Notes techniques</a>
         <a href="#contact">Contact</a>
-        <span class="lang-switch" aria-label="Sélecteur de langue">
-          <a href="/">EN</a>
-          <a href="/de/">DE</a>
-          <a href="/fr/" class="active" aria-current="page">FR</a>
-        </span>
-        <a class="btn btn-secondary"
-           href="mailto:info@lavallee.tech?subject=Demande%20de%20CV">
-          Demander le CV
-        </a>
       </nav>
+
+      <div class="language-switch" aria-label="Language switcher">
+        <a href="/en/">EN</a>
+        <a href="/de/">DE</a>
+        <a href="/fr/" class="active">FR</a>
+      </div>
+
+      <a class="button" href="https://github.com/sepp67" target="_blank" rel="noreferrer">GitHub</a>
     </div>
   </header>
 
   <main id="top">
-    <section class="hero" id="home">
+    <section class="hero">
       <div class="container hero-grid">
         <div>
-          <span class="eyebrow">Portfolio DevOps orienté production</span>
-          <h1>Vous pouvez me confier des systèmes de production.</h1>
-          <p>
-            Je conçois, déploie et exploite des infrastructures Linux prêtes pour la production pour des applications réelles.
-            Mon approche est simple : automatisation, exposition contrôlée des services, observabilité et architectures qui restent maintenables dans des conditions d’exploitation réelles.
-          </p>
+          <div class="eyebrow">Linux en production • Auto-hébergement • Automatisation</div>
+          <h1>Ceci est une<br>infrastructure de production auto-hébergée !</h1>
+          <p class="lead">Lavallee.tech documente la conception, l’exploitation et l’évolution d’une infrastructure Linux auto-hébergée.</p>
+          <p class="lead">Ce site sert à la fois de journal d’ingénierie et de portfolio public de projets d’infrastructure : hôtes Proxmox, services Docker, automatisation Ansible, monitoring, reverse proxies, accès VPN et outils collaboratifs open source.</p>
           <div class="hero-actions">
-            <a class="btn btn-primary" href="#architecture">Découvrir l’architecture</a>
-            <a class="btn btn-secondary" href="https://github.com/sepp67" target="_blank" rel="noreferrer">Voir GitHub</a>
-            <a class="btn btn-ghost" href="mailto:info@lavallee.tech">Me contacter</a>
+            <a class="button primary" href="#infrastructure">Voir l’infrastructure</a>
+            <a class="button" href="#notes">Lire les notes techniques</a>
           </div>
-          <div class="metrics">
-            <div class="metric">
-              <strong>Déploiements réels</strong>
-              <span>Des environnements multi-VM utilisés pour héberger de vrais services, pas des démos artificielles.</span>
-            </div>
-            <div class="metric">
-              <strong>Automation first</strong>
-              <span>Le déploiement de l’infrastructure et des applications repose sur la reproductibilité.</span>
-            </div>
-            <div class="metric">
-              <strong>Vision production</strong>
-              <span>Monitoring, logs, routage et visibilité sur les pannes font partie du design.</span>
-            </div>
+          <div class="stack" aria-label="Technology stack">
+            <span class="tag">Proxmox</span>
+            <span class="tag">Debian</span>
+            <span class="tag">Docker</span>
+            <span class="tag">Ansible</span>
+            <span class="tag">Caddy</span>
+            <span class="tag">Prometheus</span>
+            <span class="tag">Grafana</span>
+            <span class="tag">Loki</span>
+            <span class="tag">WireGuard</span>
           </div>
         </div>
 
-        <aside class="hero-card" aria-label="Résumé professionnel">
-          <h3>Ce que montre ce portfolio</h3>
-          <div class="steps">
-            <div class="step">
-              <strong>Ownership infrastructure</strong><br />
-              Systèmes Linux, reverse proxy, workloads conteneurisés et automatisation des déploiements.
-            </div>
-            <div class="step">
-              <strong>Réflexe opérationnel</strong><br />
-              Exposition des services, supervision, collecte de logs et troubleshooting concret.
-            </div>
-            <div class="step">
-              <strong>Exécution de projets réels</strong><br />
-              Des applications déployées sur une infrastructure staging / production réutilisable.
-            </div>
+        <aside class="terminal-card" aria-label="Résumé de l’infrastructure">
+          <div class="terminal-top">
+            <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+          </div>
+          <div class="terminal-body">
+            <p><span class="prompt">$</span> ansible-playbook site-production.yml</p>
+            <p class="comment"># initialiser les hôtes Linux</p>
+            <p class="comment"># déployer les services Docker</p>
+            <p class="comment"># configurer les reverse proxies</p>
+            <p class="comment"># publier les cibles de monitoring</p>
+            <p><span class="prompt">status:</span> production séparée du staging</p>
+            <p><span class="prompt">focus:</span> fiabilité, observabilité, documentation</p>
+            <p><span class="prompt">used stack:</span> Linux, Proxmox, Docker and Ansible</p>
           </div>
         </aside>
       </div>
     </section>
 
-    <section class="section-sm">
-      <div class="container grid-4">
-        <article class="card">
-          <h3>Fiabilité avant le bruit</h3>
-          <p>Je privilégie des systèmes clairs et compréhensibles plutôt qu’une complexité de plateforme inutile.</p>
-        </article>
-        <article class="card">
-          <h3>Exposition contrôlée</h3>
-          <p>Une gateway centrale, des règles de routage explicites et une publication maîtrisée des services.</p>
-        </article>
-        <article class="card">
-          <h3>Observabilité dès le départ</h3>
-          <p>Les métriques, dashboards et logs sont considérés comme des exigences opérationnelles.</p>
-        </article>
-        <article class="card">
-          <h3>Patterns réutilisables</h3>
-          <p>Les projets sont déployés selon des conventions répétables, pas avec des scripts jetables.</p>
-        </article>
+    <section id="infrastructure">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <h2>Architecture de l’infrastructure</h2>
+          </div>
+          <p>Un vrai projet de restructuration d’infrastructure : séparer les charges critiques de production du staging, du laboratoire et des travaux de migration.</p>
+        </div>
+
+        <div class="architecture">
+          <div class="diagram">
+            <div class="node">
+              <strong>Nœud de production</strong>
+              <span>Dell OptiPlex 3040 — services critiques</span>
+              <div class="mini-grid">
+                <div class="mini">Mail</div>
+                <div class="mini">Nextcloud</div>
+                <div class="mini">Matrix</div>
+                <div class="mini">Reverse proxy</div>
+              </div>
+            </div>
+            <div class="node">
+              <strong>Nœud staging / lab</strong>
+              <span>Dell OptiPlex 7010 — tests et automatisation</span>
+              <div class="mini-grid">
+                <div class="mini">Apps staging</div>
+                <div class="mini">Monitoring</div>
+                <div class="mini">CI/CD tests</div>
+                <div class="mini">Migration</div>
+              </div>
+            </div>
+            <div class="node">
+              <strong>Couche opérationnelle</strong>
+              <span>Ansible, Docker, Caddy, Prometheus, Grafana, Loki, WireGuard</span>
+            </div>
+          </div>
+
+          <div class="timeline">
+            <div class="step">
+              <div class="number">1</div>
+              <div>
+                <h3>Séparer production et staging</h3>
+                <p>Passer d’un hôte unique saturé à une architecture Proxmox plus claire sur deux nœuds avec des frontières opérationnelles explicites.</p>
+              </div>
+            </div>
+            <div class="step">
+              <div class="number">2</div>
+              <div>
+                <h3>Réduire la complexité Ansible</h3>
+                <p>Découper les playbooks lourds en dépôts et rôles plus petits : fondation, services de plateforme et applications.</p>
+              </div>
+            </div>
+            <div class="step">
+              <div class="number">3</div>
+              <div>
+                <h3>Migrer les services historiques</h3>
+                <p>Remplacer certains services YunoHost par des stacks Docker documentées tout en conservant les sauvegardes et la visibilité opérationnelle.</p>
+              </div>
+            </div>
+            <div class="step">
+              <div class="number">4</div>
+              <div>
+                <h3>Tout documenter</h3>
+                <p>Transformer les runbooks, incidents, diagrammes et notes de déploiement en documentation d’ingénierie publique.</p>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
-    <section class="section" id="architecture">
+    <section id="projects">
       <div class="container">
-        <span class="eyebrow">Architecture</span>
-        <h2 class="section-title">Un showcase DevOps construit autour de contraintes d’exploitation réelles.</h2>
-        <p class="section-lead">
-          Le cœur de ce portfolio est une infrastructure staging / production conçue pour déployer les services de manière contrôlée.
-          L’architecture privilégie l’isolation, la lisibilité et la maintenabilité plutôt qu’une complexité d’orchestration inutile.
-        </p>
+        <div class="section-head">
+          <div>
+            <h2>Projets</h2>
+          </div>
+          <p>Sélection de projets d’infrastructure et d’application montrant un travail concret d’ingénierie Linux.</p>
+        </div>
 
-        <div class="split" style="margin-top: 2rem;">
+        <div class="cards">
           <article class="card">
-            <h3>Topologie de haut niveau</h3>
-            <div class="diagram" aria-label="Diagramme d’infrastructure">Internet
-   |
-   v
-[ VM Proxy Caddy ]
-   |
-   +--> lavallee.staging.local   --> [ VM Web / conteneur Nginx ]
-   +--> facturier.staging.local  --> [ VM App / service conteneurisé ]
-   +--> autres domaines projets  --> [ VMs projets dédiées ]
-
-[ Contrôle du déploiement ]
-   +--> Inventaires Ansible
-   +--> Déclarations de projets
-   +--> Logique de rollout reproductible
-
-[ Stack de monitoring ]
-   +--> Prometheus
-   +--> Grafana
-   +--> Loki / Promtail
-</div>
+            <h3>Infrastructure DevOps staging / production</h3>
+            <p>Projet d’automatisation d’infrastructure pour déployer des applications dans des environnements séparés avec Ansible, Docker et des reverse proxies.</p>
+            <ul>
+              <li>Project registry</li>
+              <li>Docker image deployment</li>
+              <li>Health checks</li>
+              <li>Monitoring targets</li>
+            </ul>
           </article>
 
           <article class="card">
-            <h3>Pourquoi ce design</h3>
+            <h3>Stack collaborative auto-hébergée</h3>
+            <p>Chemin de migration de services basés sur YunoHost vers des déploiements Docker pour Matrix et Nextcloud.</p>
             <ul>
-              <li>Un reverse proxy centralisé pour une exposition contrôlée et une gestion du trafic plus simple.</li>
-              <li>Une isolation au niveau VM pour garder des services lisibles et sûrs en exploitation.</li>
-              <li>Des patterns de déploiement pilotés par Ansible pour la répétabilité et l’onboarding propre des projets.</li>
-              <li>Une stack de monitoring intégrée, car le troubleshooting commence par la visibilité.</li>
-              <li>Un usage pragmatique des conteneurs sans ajouter de couches d’orchestration inutiles.</li>
+              <li>Persistent volumes</li>
+              <li>Reverse proxy integration</li>
+              <li>Backups</li>
+              <li>Operational runbooks</li>
+            </ul>
+          </article>
+
+          <article class="card">
+            <h3>Démo française de facturation électronique</h3>
+            <p>Prototype d’application orienté Factur-X / PDP pour démontrer la génération structurée de factures électroniques.</p>
+            <ul>
+              <li>FastAPI</li>
+              <li>Docker image publishing</li>
+              <li>Factur-X generation</li>
+              <li>API integration</li>
             </ul>
           </article>
         </div>
       </div>
     </section>
 
-    <section class="section" id="capabilities">
+    <section id="notes">
       <div class="container">
-        <span class="eyebrow">Compétences</span>
-        <h2 class="section-title">Ce que je peux prendre en charge.</h2>
-        <p class="section-lead">
-          Ce portfolio se veut concret. Il montre le type de systèmes et de responsabilités que je peux assumer de bout en bout, du design de déploiement à la visibilité opérationnelle.
-        </p>
-
-        <div class="grid-3" style="margin-top: 2rem;">
-          <article class="card">
-            <h3>Infrastructure Linux</h3>
-            <p>Provisioning, exploitation et maintien en condition d’environnements serveurs Linux avec un focus sur la stabilité et la clarté.</p>
-          </article>
-          <article class="card">
-            <h3>Automatisation des déploiements</h3>
-            <p>Patterns d’automatisation réutilisables avec Ansible pour l’onboarding des projets, la cohérence de configuration et des rollouts reproductibles.</p>
-          </article>
-          <article class="card">
-            <h3>Reverse proxy & routage</h3>
-            <p>Publication des services via une gateway centrale avec mapping explicite des domaines et contrôle des upstreams.</p>
-          </article>
-          <article class="card">
-            <h3>Services conteneurisés</h3>
-            <p>Packaging et déploiement d’applications avec Docker dans un cadre opérationnel pragmatique.</p>
-          </article>
-          <article class="card">
-            <h3>Monitoring & logging</h3>
-            <p>Métriques, dashboards et pipelines de logs pour un vrai troubleshooting et une bonne visibilité des services.</p>
-          </article>
-          <article class="card">
-            <h3>Troubleshooting production</h3>
-            <p>Débogage des problèmes de routage, d’exposition de services, de pipelines de logs et de comportement réel en exploitation.</p>
-          </article>
-        </div>
-
-        <div class="tag-row">
-          <span class="tag">Linux</span>
-          <span class="tag">Ansible</span>
-          <span class="tag">Docker</span>
-          <span class="tag">Caddy</span>
-          <span class="tag">Nginx</span>
-          <span class="tag">Prometheus</span>
-          <span class="tag">Grafana</span>
-          <span class="tag">Loki</span>
-          <span class="tag">Reverse Proxy</span>
-          <span class="tag">Observabilité</span>
-        </div>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="container split">
-        <article class="card">
-          <h3>Réflexe production</h3>
-          <ul>
-            <li>La fiabilité compte plus qu’une sophistication inutile.</li>
-            <li>La visibilité opérationnelle doit exister avant les incidents.</li>
-            <li>Une séparation claire des responsabilités vaut mieux qu’une croissance anarchique.</li>
-            <li>Les architectures simples sont plus faciles à expliquer, maintenir et fiabiliser.</li>
-          </ul>
-        </article>
-        <article class="card">
-          <h3>À quoi sert cette infrastructure</h3>
-          <ul>
-            <li>Héberger de vrais services derrière une gateway centralisée.</li>
-            <li>Valider des patterns de déploiement en staging et en production.</li>
-            <li>Tester le design du monitoring et du logging dans des scénarios réalistes.</li>
-            <li>Servir de base réutilisable pour plusieurs projets applicatifs.</li>
-          </ul>
-        </article>
-      </div>
-    </section>
-
-    <section class="section" id="projects">
-      <div class="container">
-        <span class="eyebrow">Projets</span>
-        <h2 class="section-title">Des applications qui tournent sur cette infrastructure.</h2>
-        <p class="section-lead">
-          Les projets ci-dessous ne sont pas le centre du portfolio. Ils prouvent que l’infrastructure est conçue pour héberger, exposer et exploiter de vraies charges de travail.
-        </p>
-
-        <div class="grid-3" style="margin-top: 2rem;">
-          <article class="card">
-            <h3>Facturier</h3>
-            <p>
-              Un projet de e-invoicing déployé comme application réelle sur cette infrastructure, qui démontre un déploiement conteneurisé, un routage via la couche proxy et une logique orientée intégration.
-            </p>
-            <a class="btn btn-ghost" href="https://facturier.lavallee.tech" target="_blank" rel="noreferrer">Voir le projet</a>
-          </article>
-          <article class="card">
-            <h3>lavallee.tech</h3>
-            <p>
-              Un site statique multilingue déployé avec la même logique staging / production, servant à la fois de portfolio et de showcase de déploiement.
-            </p>
-          </article>
-          <article class="card">
-            <h3>Projets à venir</h3>
-            <p>
-              L’infrastructure est volontairement réutilisable afin d’intégrer d’autres services avec le même modèle opérationnel.
-            </p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section-sm">
-      <div class="container grid-3">
-        <article class="card">
-          <h3>Localisation</h3>
-          <p>Basé en France. Ouvert aux opportunités en Allemagne, en Suisse, ainsi qu’aux postes remote ou hybrides.</p>
-        </article>
-        <article class="card">
-          <h3>Langues</h3>
-          <p>Des versions anglaise, allemande et française sont disponibles sur ce site pour accompagner les candidatures internationales.</p>
-        </article>
-        <article class="card">
-          <h3>Usage en candidature</h3>
-          <p>Ce site est conçu pour soutenir des candidatures comme portfolio concret de mes compétences en infrastructure et en IT.</p>
-        </article>
-      </div>
-    </section>
-
-    <section class="section-sm" id="contact">
-      <div class="container">
-        <div class="panel cta">
+        <div class="section-head">
           <div>
-            <h2 style="margin:0 0 .4rem;">À la recherche d’un poste DevOps / Linux avec une vraie responsabilité de production.</h2>
-            <p>
-              Si vous recrutez pour des sujets d’infrastructure, d’automatisation, d’exploitation Linux, d’observabilité ou de responsabilités plateforme,
-              ce portfolio est conçu pour montrer ma manière de penser et ce que je peux prendre en charge.
-            </p>
+            <h2>Notes techniques</h2>
           </div>
-          <div class="hero-actions" style="margin-top:0;">
-            <a class="btn btn-primary" href="mailto:info@lavallee.tech">Me contacter</a>
-            <a class="btn btn-secondary"
-               href="mailto:info@lavallee.tech?subject=Demande%20de%20CV">
-              Demander le CV
-            </a>
+          <p>Articles sur les décisions d’architecture, les migrations, les incidents opérationnels et la conception d’infrastructure.</p>
+        </div>
+
+        <div class="articles">
+          <article class="card article">
+            <div>
+              <div class="meta">Architecture</div>
+              <h3>Pourquoi je sépare le staging et la production sur deux nœuds Proxmox</h3>
+              <p>Pression sur la RAM, frontières opérationnelles et besoin d’expérimenter plus sûrement sur une infrastructure réelle.</p>
+            </div>
+            <a class="button" href="#">Lire la note</a>
+          </article>
+
+          <article class="card article">
+            <div>
+              <div class="meta">Migration</div>
+              <h3>Migrer de YunoHost vers Docker sans perdre en clarté opérationnelle</h3>
+              <p>Comment aborder les applications avec état, les volumes, les règles de reverse proxy, les sauvegardes et l’observabilité.</p>
+            </div>
+            <a class="button" href="#">Lire la note</a>
+          </article>
+
+          <article class="card article">
+            <div>
+              <div class="meta">Observabilité</div>
+              <h3>Construire une stack de monitoring pour une petite infrastructure auto-hébergée</h3>
+              <p>Prometheus, Grafana, Loki et blackbox monitoring pour les opérations quotidiennes concrètes.</p>
+            </div>
+            <a class="button" href="#">Lire la note</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <div class="contact">
+          <div>
+            <h2>Travaillons ensemble</h2>
+            <p>Cette plateforme présente mon travail d’ingénierie Linux, mes projets d’infrastructure et mes notes techniques. Elle s’adresse à la fois aux recruteurs, aux associations et PME locales qui cherchent des solutions open source.</p>
+          </div>
+
+          <div class="contact-grid">
+            <article class="contact-card">
+              <h3>Recruteurs & équipes techniques</h3>
+              <p>Vous venez de LinkedIn ou GitHub ? Consultez mes projets, articles techniques et choix d’architecture pour comprendre comment je conçois, automatise et exploite des infrastructures Linux.</p>
+              <a class="button primary" href="#projects">Explorer les projets</a>
+            </article>
+
+            <article class="contact-card">
+              <h3>Petites entreprises & associations</h3>
+              <p>Vous cherchez un Nextcloud, un VPN, des serveurs Linux, des sauvegardes ou des alternatives open source aux services cloud ? Je peux aider à concevoir et déployer des solutions simples, durables et bien documentées.</p>
+              <a class="button" href="mailto:info@lavallee.tech">Me contacter</a>
+            </article>
           </div>
         </div>
       </div>
@@ -666,18 +259,9 @@
   </main>
 
   <footer>
-    <div class="container footer-grid">
-      <div>
-        <strong>lavallee.tech</strong><br />
-        Portfolio DevOps prêt pour la production, centré sur l’infrastructure, l’automatisation et la confiance opérationnelle.
-      </div>
-      <div class="footer-links">
-        <a href="#home">Accueil</a>
-        <a href="#architecture">Architecture</a>
-        <a href="#capabilities">Compétences</a>
-        <a href="#projects">Projets</a>
-        <a href="mailto:info@lavallee.tech">Contact</a>
-      </div>
+    <div class="container footer-inner">
+      <span>© 2026 lavallee.tech</span>
+      <span>Linux • Open Source • Ingénierie Infrastructure</span>
     </div>
   </footer>
 </body>
