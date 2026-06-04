@@ -1,0 +1,33 @@
+{{ define "main" }}
+<section class="section">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <h1>{{ .Title }}</h1>
+      </div>
+      {{ with .Description }}
+        <p>{{ . }}</p>
+      {{ end }}
+    </div>
+
+    {{ .Content }}
+
+    <div class="cards">
+      {{ range .Pages }}
+        <article class="card article">
+          <div>
+            {{ with .Date }}
+              <div class="meta">{{ .Format "2006-01-02" }}</div>
+            {{ end }}
+            <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
+            {{ with .Description }}
+              <p>{{ . }}</p>
+            {{ end }}
+          </div>
+          <p><a class="button" href="{{ .RelPermalink }}">Read article</a></p>
+        </article>
+      {{ end }}
+    </div>
+  </div>
+</section>
+{{ end }}

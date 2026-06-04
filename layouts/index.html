@@ -1,34 +1,38 @@
+{{ $home := index site.Data (printf "home.%s" .Site.Language.Lang) }}
 <!doctype html>
-<html lang="en">
+<html lang="{{ .Site.Language.Lang }}">
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>lavallee.tech — Open Source Infrastructure</title>
-  <meta name="description" content="Self-hosted Linux infrastructure: Proxmox, Docker, Ansible, monitoring, production/staging and engineering documentation.">
+  <title>{{ .Site.Title }} — Open Source Infrastructure</title>
+  <meta name="description"
+    content="Self-hosted Linux infrastructure: Proxmox, Docker, Ansible, monitoring, production/staging and engineering documentation.">
   <link rel="stylesheet" href="/css/style.css">
 </head>
+
 <body>
   <header>
     <div class="container nav">
-      <a class="brand" href="#top" aria-label="lavallee.tech home">
+      <a class="brand" href="{{ "/" | relLangURL }}" aria-label="lavallee.tech home">
         <span>lavallee.tech</span>
-        <span>Open Source Infrastructure</span>
+        <span>{{ $home.brand_subtitle }}</span>
       </a>
 
       <nav class="nav-links" aria-label="Main navigation">
-        <a href="#infrastructure">Infrastructure</a>
-        <a href="#projects">Projects</a>
-        <a href="#notes">Engineering Notes</a>
-        <a href="#contact">Contact</a>
+        <a href="#infrastructure">{{ $home.nav.infrastructure }}</a>
+        <a href="#projects">{{ $home.nav.projects }}</a>
+        <a href="{{ "/articles/" | relLangURL }}">{{ $home.nav.notes }}</a>
+        <a href="#contact">{{ $home.nav.contact }}</a>
       </nav>
 
       <div class="language-switch" aria-label="Language switcher">
-        <a href="/en/" class="active">EN</a>
-        <a href="/de/">DE</a>
-        <a href="/fr/">FR</a>
+        <a href="/en/" {{ if eq .Site.Language.Lang "en" }}class="active"{{ end }}>EN</a>
+        <a href="/de/" {{ if eq .Site.Language.Lang "de" }}class="active"{{ end }}>DE</a>
+        <a href="/fr/" {{ if eq .Site.Language.Lang "fr" }}class="active"{{ end }}>FR</a>
       </div>
 
-      <a class="button" href="https://github.com/sepp67" target="_blank" rel="noreferrer">GitHub</a>
+      <a class="button" href="{{ .Site.Params.github }}" target="_blank" rel="noreferrer">GitHub</a>
     </div>
   </header>
 
@@ -36,14 +40,17 @@
     <section class="hero">
       <div class="container hero-grid">
         <div>
-          <div class="eyebrow">Production Linux • Self-hosting • Automation</div>
-          <h1>This is a<br>self-hosted production infrastructure!</h1>
-          <p class="lead">Lavallee.tech documents the design, operation and evolution of a self-hosted Linux infrastructure.</p>
-          <p class="lead">This website serves both as an engineering journal and as a public portfolio of infrastructure projects: Proxmox hosts, Docker services, Ansible automation, monitoring, reverse proxies, VPN access and open-source collaboration tools.</p>
+          <div class="eyebrow">{{ $home.hero.eyebrow }}</div>
+          <h1>{{ $home.hero.title | safeHTML }}</h1>
+
+          <p class="lead">{{ $home.hero.lead_1 }}</p>
+          <p class="lead">{{ $home.hero.lead_2 }}</p>
+
           <div class="hero-actions">
-            <a class="button primary" href="#infrastructure">View infrastructure</a>
-            <a class="button" href="{{ "/articles/" | relLangURL }}">Read engineering notes</a>
+            <a class="button primary" href="#infrastructure">{{ $home.hero.primary_button }}</a>
+            <a class="button" href="{{ "/articles/" | relLangURL }}">{{ $home.hero.secondary_button }}</a>
           </div>
+
           <div class="stack" aria-label="Technology stack">
             <span class="tag">Proxmox</span>
             <span class="tag">Debian</span>
@@ -57,19 +64,21 @@
           </div>
         </div>
 
-        <aside class="terminal-card" aria-label="Infrastructure summary">
+        <aside class="terminal-card" aria-label="{{ $home.terminal.aria_label }}">
           <div class="terminal-top">
             <span class="dot"></span><span class="dot"></span><span class="dot"></span>
           </div>
+
           <div class="terminal-body">
-            <p><span class="prompt">$</span> ansible-playbook site-production.yml</p>
-            <p class="comment"># bootstrap Linux hosts</p>
-            <p class="comment"># deploy Docker services</p>
-            <p class="comment"># configure reverse proxies</p>
-            <p class="comment"># publish monitoring targets</p>
-            <p><span class="prompt">status:</span> production separated from staging</p>
-            <p><span class="prompt">focus:</span> reliability, observability, documentation</p>
-            <p><span class="prompt">used stack:</span> Linux, Proxmox, Docker and Ansible</p>
+            <p><span class="prompt">$</span> {{ $home.terminal.command }}</p>
+
+            {{ range $home.terminal.lines }}
+            <p class="comment">{{ . }}</p>
+            {{ end }}
+
+            <p><span class="prompt">status:</span> {{ $home.terminal.status }}</p>
+            <p><span class="prompt">focus:</span> {{ $home.terminal.focus }}</p>
+            <p><span class="prompt">used stack:</span> {{ $home.terminal.stack }}</p>
           </div>
         </aside>
       </div>
@@ -79,9 +88,9 @@
       <div class="container">
         <div class="section-head">
           <div>
-            <h2>Infrastructure architecture</h2>
+            <h2>{{ $home.infrastructure.title }}</h2>
           </div>
-          <p>A real infrastructure restructuring project: separating critical production workloads from staging, lab and migration work.</p>
+          <p>{{ $home.infrastructure.intro }}</p>
         </div>
 
         <div class="architecture">
@@ -96,6 +105,7 @@
                 <div class="mini">Reverse proxy</div>
               </div>
             </div>
+
             <div class="node">
               <strong>Staging / Lab node</strong>
               <span>Dell OptiPlex 7010 — tests and automation</span>
@@ -106,6 +116,7 @@
                 <div class="mini">Migration work</div>
               </div>
             </div>
+
             <div class="node">
               <strong>Operational layer</strong>
               <span>Ansible, Docker, Caddy, Prometheus, Grafana, Loki, WireGuard</span>
@@ -117,23 +128,29 @@
               <div class="number">1</div>
               <div>
                 <h3>Separate production and staging</h3>
-                <p>Move from a single overloaded host to a clearer two-node Proxmox architecture with explicit operational boundaries.</p>
+                <p>Move from a single overloaded host to a clearer two-node Proxmox architecture with explicit
+                  operational boundaries.</p>
               </div>
             </div>
+
             <div class="step">
               <div class="number">2</div>
               <div>
                 <h3>Reduce Ansible complexity</h3>
-                <p>Split heavy playbooks into smaller repositories and roles: foundation, platform services and applications.</p>
+                <p>Split heavy playbooks into smaller repositories and roles: foundation, platform services and
+                  applications.</p>
               </div>
             </div>
+
             <div class="step">
               <div class="number">3</div>
               <div>
                 <h3>Migrate legacy services</h3>
-                <p>Replace selected YunoHost services with documented Docker stacks while preserving backups and operational visibility.</p>
+                <p>Replace selected YunoHost services with documented Docker stacks while preserving backups and
+                  operational visibility.</p>
               </div>
             </div>
+
             <div class="step">
               <div class="number">4</div>
               <div>
@@ -150,15 +167,16 @@
       <div class="container">
         <div class="section-head">
           <div>
-            <h2>Projects</h2>
+            <h2>{{ $home.projects.title }}</h2>
           </div>
-          <p>Selected infrastructure and application projects used to demonstrate practical Linux engineering work.</p>
+          <p>{{ $home.projects.intro }}</p>
         </div>
 
         <div class="cards">
           <article class="card">
             <h3>DevOps staging / production infrastructure</h3>
-            <p>Infrastructure automation project for deploying applications across separated environments using Ansible, Docker and reverse proxies.</p>
+            <p>Infrastructure automation project for deploying applications across separated environments using Ansible,
+              Docker and reverse proxies.</p>
             <ul>
               <li>Project registry</li>
               <li>Docker image deployment</li>
@@ -196,38 +214,30 @@
       <div class="container">
         <div class="section-head">
           <div>
-            <h2>Engineering notes</h2>
+            <h2>{{ $home.notes.title }}</h2>
           </div>
-          <p>Long-form notes about architecture decisions, migrations, operational incidents and infrastructure design.</p>
+          <p>{{ $home.notes.intro }}</p>
         </div>
 
         <div class="articles">
+          {{ range first 3 (where .Site.RegularPages "Section" "articles") }}
           <article class="card article">
             <div>
-              <div class="meta">Architecture</div>
-              <h3>Why I split staging and production into separate Proxmox nodes</h3>
-              <p>RAM pressure, operational boundaries and the need for safer experiments on real infrastructure.</p>
-            </div>
-            <a class="button" href="#">Read note</a>
-          </article>
+              <div class="meta">
+                {{ with .Params.tags }}
+                  {{ index . 0 | title }}
+                {{ else }}
+                  Article
+                {{ end }}
+              </div>
 
-          <article class="card article">
-            <div>
-              <div class="meta">Migration</div>
-              <h3>Migrating from YunoHost to Docker without losing operational clarity</h3>
-              <p>How to approach stateful applications, volumes, reverse proxy rules, backups and observability.</p>
+              <h3>{{ .Title }}</h3>
+              <p>{{ .Description }}</p>
             </div>
-            <a class="button" href="#">Read note</a>
-          </article>
 
-          <article class="card article">
-            <div>
-              <div class="meta">Observability</div>
-              <h3>Building a monitoring stack for small self-hosted infrastructures</h3>
-              <p>Prometheus, Grafana, Loki and blackbox monitoring for practical day-to-day operations.</p>
-            </div>
-            <a class="button" href="#">Read note</a>
+            <a class="button" href="{{ .RelPermalink }}">{{ $home.notes.read_button }}</a>
           </article>
+          {{ end }}
         </div>
       </div>
     </section>
@@ -236,21 +246,21 @@
       <div class="container">
         <div class="contact">
           <div>
-            <h2>how to work together</h2>
-            <p>This platform showcases my Linux engineering work, infrastructure projects and technical notes. It is intended both for recruiters and for local organizations looking for practical open-source solutions.</p>
+            <h2>{{ $home.contact.title }}</h2>
+            <p>{{ $home.contact.intro }}</p>
           </div>
 
           <div class="contact-grid">
             <article class="contact-card">
-              <h3>Recruiters & Technical Teams</h3>
-              <p>Coming from LinkedIn or GitHub? Explore my projects, technical articles and architectural decisions to understand how I design, automate and operate Linux infrastructures.</p>
-              <a class="button primary" href="#projects">Explore Projects</a>
+              <h3>{{ $home.contact.recruiter_title }}</h3>
+              <p>{{ $home.contact.recruiter_text }}</p>
+              <a class="button primary" href="#projects">{{ $home.contact.recruiter_button }}</a>
             </article>
 
             <article class="contact-card">
-              <h3>Small Businesses & Associations</h3>
-              <p>Looking for Nextcloud, VPN, Linux servers, backup solutions or open-source alternatives to cloud services? I can help design and deploy solutions that are simple, sustainable and well documented.</p>
-              <a class="button" href="mailto:info@lavallee.tech">Get in Touch</a>
+              <h3>{{ $home.contact.local_title }}</h3>
+              <p>{{ $home.contact.local_text }}</p>
+              <a class="button" href="mailto:{{ .Site.Params.email }}">{{ $home.contact.local_button }}</a>
             </article>
           </div>
         </div>
@@ -261,8 +271,9 @@
   <footer>
     <div class="container footer-inner">
       <span>© 2026 lavallee.tech</span>
-      <span>Linux • Open Source • Infrastructure Engineering</span>
+      <span>{{ $home.footer.text }}</span>
     </div>
   </footer>
 </body>
+
 </html>

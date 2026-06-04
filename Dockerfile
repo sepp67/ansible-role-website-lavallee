@@ -1,12 +1,15 @@
+FROM klakegg/hugo:0.92.2-ext-alpine AS builder
+
+WORKDIR /src
+COPY . .
+
+RUN hugo --minify
+
 FROM nginx:stable-alpine
 
-# Nettoyage du contenu par défaut
 RUN rm -rf /usr/share/nginx/html/*
 
-# Application
-COPY files/app/ /usr/share/nginx/html/
-
-# Configuration nginx
+COPY --from=builder /src/public/ /usr/share/nginx/html/
 COPY docker/nginx.conf /etc/nginx/conf.d/default.conf
 
 EXPOSE 80
