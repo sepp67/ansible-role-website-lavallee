@@ -1,0 +1,127 @@
+baseURL: "https://lavallee.tech/"
+title: "lavallee.tech"
+
+defaultContentLanguage: en
+defaultContentLanguageInSubdir: true
+
+enableRobotsTXT: true
+
+pagination:
+  pagerSize: 10
+
+languages:
+  en:
+    languageName: "English"
+    languageCode: "en-US"
+    contentDir: "content/en"
+    weight: 1
+
+    params:
+      description: "Production-ready Linux and DevOps infrastructure."
+      author: "Sébastien Lavallée"
+
+    menu:
+      main:
+        - name: Home
+          pageRef: /
+          weight: 10
+
+        - name: Projects
+          pageRef: /projects
+          weight: 20
+
+        - name: Articles
+          pageRef: /articles
+          weight: 30
+
+        - name: About
+          pageRef: /about
+          weight: 40
+
+        - name: Contact
+          pageRef: /contact
+          weight: 50
+
+  de:
+    languageName: "Deutsch"
+    languageCode: "de-DE"
+    contentDir: "content/de"
+    weight: 2
+
+    params:
+      description: "Produktionsreife Linux- und DevOps-Infrastruktur."
+      author: "Sébastien Lavallée"
+
+    menu:
+      main:
+        - name: Startseite
+          pageRef: /
+          weight: 10
+
+        - name: Projekte
+          pageRef: /projects
+          weight: 20
+
+        - name: Artikel
+          pageRef: /articles
+          weight: 30
+
+        - name: Über mich
+          pageRef: /about
+          weight: 40
+
+        - name: Kontakt
+          pageRef: /contact
+          weight: 50
+
+  fr:
+    languageName: "Français"
+    languageCode: "fr-FR"
+    contentDir: "content/fr"
+    weight: 3
+
+    params:
+      description: "Infrastructure Linux et DevOps prête pour la production."
+      author: "Sébastien Lavallée"
+
+    menu:
+      main:
+        - name: Accueil
+          pageRef: /
+          weight: 10
+
+        - name: Projets
+          pageRef: /projects
+          weight: 20
+
+        - name: Articles
+          pageRef: /articles
+          weight: 30
+
+        - name: À propos
+          pageRef: /about
+          weight: 40
+
+        - name: Contact
+          pageRef: /contact
+          weight: 50
+
+params:
+  author: "Sébastien Lavallée"
+  github: "https://github.com/sepp67"
+  email: "info@lavallee.tech"
+
+markup:
+  goldmark:
+    renderer:
+      unsafe: true
+
+outputs:
+  home:
+    - HTML
+    - RSS
+
+sitemap:
+  changefreq: weekly
+  priority: 0.5
+  filename: sitemap.xml

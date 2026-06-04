@@ -1,0 +1,23 @@
+{{ define "main" }}
+<section class="section">
+  <div class="container">
+    <article class="card">
+      {{ with .Date }}
+      <div class="meta">
+        Published on {{ .Format "January 2, 2006" }}
+      </div>
+      {{ end }}
+
+      <h1>{{ .Title }}</h1>
+
+      {{ with .Description }}
+      <p class="lead">{{ . }}</p>
+      {{ end }}
+
+      <div class="article-content">
+        {{ .Content }}
+      </div>
+    </article>
+  </div>
+</section>
+{{ end }}

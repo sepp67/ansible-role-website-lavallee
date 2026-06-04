@@ -1,0 +1,55 @@
+# data/home.de.yaml
+brand_subtitle: "Open Source Infrastructure"
+
+nav:
+  infrastructure: "Infrastruktur"
+  projects: "Projekte"
+  notes: "Engineering Notes"
+  contact: "Kontakt"
+
+hero:
+  eyebrow: "Produktions-Linux • Self-Hosting • Automatisierung"
+  title: "Das ist eine<br>selbst gehostete Webhosting Infrastruktur!"
+  lead_1: "Lavallee.tech dokumentiert den Entwurf, den Betrieb und die Weiterentwicklung einer selbst gehosteten Linux-Infrastruktur."
+  lead_2: "Diese Website dient zugleich als Engineering-Journal und als öffentliches Portfolio für Infrastrukturprojekte: Proxmox-Hosts, Docker-Services, Ansible-Automatisierung, Monitoring, Reverse Proxies, VPN-Zugänge und Open-Source-Kollaborationstools."
+  primary_button: "Infrastruktur ansehen"
+  secondary_button: "Engineering Notes lesen"
+
+terminal:
+  aria_label: "Infrastrukturübersicht"
+  command: "ansible-playbook site-production.yml"
+  lines:
+    - "# Linux-Hosts initialisieren"
+    - "# Docker-Services bereitstellen"
+    - "# Reverse Proxies konfigurieren"
+    - "# Monitoring-Targets veröffentlichen"
+  status: "Produktion von Staging getrennt"
+  focus: "Zuverlässigkeit, Observability, Dokumentation"
+  stack: "Linux, Proxmox, Docker and Ansible"
+
+infrastructure:
+  title: "Infrastrukturarchitektur"
+  intro: "Ein reales Restrukturierungsprojekt: kritische Produktions-Workloads werden von Staging-, Lab- und Migrationsarbeiten getrennt."
+
+projects:
+  title: "Projekte"
+  intro: "Ausgewählte Infrastruktur- und Anwendungsprojekte, die praktische Linux-Engineering-Arbeit zeigen."
+
+notes:
+  title: "Engineering Notes"
+  intro: "Längere Notizen zu Architekturentscheidungen, Migrationen, betrieblichen Vorfällen und Infrastrukturdesign."
+  read_button: "Artikel lesen"
+
+contact:
+  title: "Wir können zusammenarbeiten"
+  intro: "Diese Plattform zeigt meine Linux-Engineering-Arbeit, Infrastrukturprojekte und technischen Notizen. Sie richtet sich sowohl an Recruiter als auch an lokale Organisationen, die praktische Open-Source-Lösungen suchen."
+  recruiter_title: "Recruiter & technische Teams"
+  recruiter_text: "Kommen Sie von LinkedIn oder GitHub? Sehen Sie sich meine Projekte, technischen Artikel und Architekturentscheidungen an, um zu verstehen, wie ich Linux-Infrastrukturen entwerfe, automatisiere und betreibe."
+  recruiter_button: "Projekte ansehen"
+  local_title: "Kleine Unternehmen & Vereine"
+  local_text: "Suchen Sie Nextcloud, VPN, Linux-Server, Backup-Lösungen oder Open-Source-Alternativen zu Cloud-Diensten? Ich kann helfen, einfache, nachhaltige und gut dokumentierte Lösungen zu entwerfen und bereitzustellen."
+  local_button: "Kontakt aufnehmen"
+
+footer:
+  text: "Linux • Open Source • Infrastructure Engineering"
+

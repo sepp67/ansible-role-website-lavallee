@@ -1,0 +1,65 @@
+{{ $home := index site.Data (printf "home.%s" .Site.Language.Lang) }}
+<!doctype html>
+<html lang="{{ .Site.Language.Lang }}">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>{{ if .Title }}{{ .Title }} · {{ .Site.Title }}{{ else }}{{ .Site.Title }}{{ end }}</title>
+  <meta name="description" content="{{ with .Description }}{{ . }}{{ else }}{{ .Site.Params.description }}{{ end }}">
+
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="icon" href="/assets/logo.png">
+
+  {{ range .Translations }}
+  <link rel="alternate" hreflang="{{ .Language.Lang }}" href="{{ .Permalink }}">
+  {{ end }}
+</head>
+
+<body>
+  <header>
+    <div class="container nav">
+      <a class="brand" href="{{ "/" | relLangURL }}" aria-label="lavallee.tech home">
+        <span>lavallee.tech</span>
+        <span>{{ $home.brand_subtitle }}</span>
+      </a>
+
+      <nav class="nav-links" aria-label="Main navigation">
+        <a href="{{ "/#infrastructure" | relLangURL }}">{{ $home.nav.infrastructure }}</a>
+        <a href="{{ "/#projects" | relLangURL }}">{{ $home.nav.projects }}</a>
+        <a href="{{ "/articles/" | relLangURL }}">{{ $home.nav.notes }}</a>
+        <a href="{{ "/#contact" | relLangURL }}">{{ $home.nav.contact }}</a>
+      </nav>
+
+      <div class="language-switch" aria-label="Language switcher">
+        {{ if .IsTranslated }}
+          {{ range .AllTranslations }}
+            <a href="{{ .RelPermalink }}" {{ if eq $.Site.Language.Lang .Language.Lang }}class="active"{{ end }}>
+              {{ upper .Language.Lang }}
+            </a>
+          {{ end }}
+        {{ else }}
+          <a href="/en/" {{ if eq .Site.Language.Lang "en" }}class="active"{{ end }}>EN</a>
+          <a href="/de/" {{ if eq .Site.Language.Lang "de" }}class="active"{{ end }}>DE</a>
+          <a href="/fr/" {{ if eq .Site.Language.Lang "fr" }}class="active"{{ end }}>FR</a>
+        {{ end }}
+      </div>
+
+      <a class="button" href="{{ .Site.Params.github }}" target="_blank" rel="noreferrer">GitHub</a>
+    </div>
+  </header>
+
+  <main id="top">
+    {{ block "main" . }}{{ end }}
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <span>© {{ now.Year }} lavallee.tech</span>
+      <span>{{ $home.footer.text }}</span>
+    </div>
+  </footer>
+</body>
+
+</html>
