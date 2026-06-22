@@ -112,7 +112,7 @@
 
     .button:hover {
       transform: translateY(-1px);
-      background: #2a2e30;
+      background: rgba(233, 84, 32, .22);
       border-color: var(--accent);
       color: var(--text);
     }
@@ -555,4 +555,69 @@
   border-radius: 18px;
   border: 1px solid var(--border-soft);
   margin: 24px 0;
+}
+
+/* === Theme clair === */
+:root[data-theme="light"] {
+  --bg: #f7f5f1;
+  --bg-soft: #ffffff;
+  --panel: #ffffff;
+  --panel-light: #f1efe8;
+  --panel-strong: #ffffff;
+
+  --text: #1a1a1a;
+  --muted: #5b554c;
+
+  --border: rgba(20, 18, 16, .16);
+  --border-soft: rgba(20, 18, 16, .09);
+
+  --shadow: 0 18px 50px rgba(0, 0, 0, .08);
+}
+
+:root[data-theme="light"] header {
+  background: rgba(255, 255, 255, .88);
+}
+
+:root[data-theme="light"] ::selection {
+  background: #bcd9ff;
+  color: #1a1a1a;
+}
+
+/* =========================================================
+   Widget de selection de theme (sobre / clair)
+   ========================================================= */
+.theme-switch {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--muted);
+  font-size: .85rem;
+}
+
+.theme-switch__btn {
+  background: transparent;
+  border: 1px solid transparent;
+  color: var(--muted);
+  padding: 5px 10px;
+  border-radius: 999px;
+  font-size: .85rem;
+  font-family: inherit;
+  cursor: pointer;
+  transition: color .15s ease, border-color .15s ease, background .15s ease;
+}
+
+.theme-switch__btn:hover {
+  color: var(--text);
+  border-color: var(--border-soft);
+  background: var(--panel-light);
+}
+
+.theme-switch__btn[aria-pressed="true"] {
+  color: var(--text);
+  border-color: var(--border-soft);
+  background: var(--panel-light);
+}
+
+:root[data-theme="light"] .button:hover {
+  background: rgba(233, 84, 32, .14);
 }

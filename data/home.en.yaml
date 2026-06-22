@@ -11,6 +11,10 @@ nav:
   contact: Contact
 language_switch:
   aria_label: Language switcher
+theme_switch:
+  aria_label: Theme switcher
+  sober: Dark
+  light: Light
 hero:
   eyebrow: Production Linux • Self-hosting • Automation
   title: This is a<br>self-hosted production infrastructure!

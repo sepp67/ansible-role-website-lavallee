@@ -11,6 +11,10 @@ nav:
   contact: Contact
 language_switch:
   aria_label: Sélecteur de langue
+theme_switch:
+  aria_label: Sélecteur de thème
+  sober: Sobre
+  light: Clair
 hero:
   eyebrow: Linux en production • Auto-hébergement • Automatisation
   title: Ceci est une<br>infrastructure de production auto-hébergée !
