@@ -16,6 +16,7 @@ Credential theft has become the number one entry point in the majority of securi
 
 The question isn't whether you need to do it. It's how to do it without putting everything else at risk.
 
+
 ## Three paths, only one that prepares for what comes next
 
 When you look at the options for adding MFA to an existing infrastructure, you generally find three paths.
@@ -29,6 +30,7 @@ When you look at the options for adding MFA to an existing infrastructure, you g
 We chose the third path. That's the core of this article: why we made that choice, how it's built technically, and what it makes possible once in place.
 
 ## The architecture: two roles, clearly separated
+![Adding MFA Without Breaking What Already Works](/images/articles/mfa/add-MFA.png)
 
 The most important decision in this project wasn't a choice of tool, but a choice of **separation of responsibilities**. Rather than looking for a single product that does everything, we introduced two components between the directory and the applications, each with a precise role.
 

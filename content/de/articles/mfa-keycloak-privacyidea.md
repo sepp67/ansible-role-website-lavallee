@@ -29,6 +29,7 @@ Betrachtet man die Möglichkeiten, MFA in eine bestehende Infrastruktur einzufü
 Wir haben uns für den dritten Weg entschieden. Das ist der Kern dieses Artikels: warum wir diese Entscheidung getroffen haben, wie sie technisch umgesetzt wird, und was sie einmal etabliert ermöglicht.
 
 ## Die Architektur: zwei klar getrennte Rollen
+![MFA hinzufügen, ohne das zu beeinträchtigen, was bereits funktioniert.](/images/articles/mfa/add-MFA-de.png)
 
 Die wichtigste Entscheidung in diesem Projekt war nicht die Wahl eines Werkzeugs, sondern die Entscheidung für eine **klare Trennung der Zuständigkeiten**. Statt nach einem einzigen Produkt zu suchen, das alles erledigt, haben wir zwei Komponenten zwischen Verzeichnis und Anwendungen eingeführt – jede mit einer präzisen Aufgabe.
 

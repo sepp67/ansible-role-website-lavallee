@@ -29,7 +29,7 @@ Quand on regarde les options disponibles pour ajouter le MFA à une infrastructu
 Nous avons choisi la troisième voie. C'est le cœur de cet article : pourquoi ce choix, comment il se construit techniquement, et ce qu'il rend possible une fois en place.
 
 ## L'architecture retenue : deux rôles, clairement séparés
-
+![Intégrer l'authentification à deux facteurs sans perturber ce qui fonctionne déjà.](/images/articles/mfa/add-MFA-fr.png)
 La décision la plus importante de ce projet n'a pas été un choix d'outil, mais un choix de **séparation des responsabilités**. Plutôt que de chercher un produit unique qui ferait tout, nous avons introduit deux composants entre l'annuaire et les applications, chacun avec un rôle précis.
 
 ### Keycloak, comme point de passage unique
