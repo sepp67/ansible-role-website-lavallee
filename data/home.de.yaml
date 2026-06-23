@@ -11,6 +11,10 @@ nav:
   contact: Kontakt
 language_switch:
   aria_label: Sprachauswahl
+theme_switch:
+  aria_label: Themenauswahl
+  sober: Dunkel
+  light: Hell
 hero:
   eyebrow: Produktions-Linux • Self-Hosting • Automatisierung
   title: Das ist eine<br>selbst gehostete Hostinginfrastruktur!

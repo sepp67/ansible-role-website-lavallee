@@ -6,6 +6,15 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem('lavallee-theme') || 'sobre';
+        document.documentElement.setAttribute('data-theme', t);
+      } catch (e) {}
+    })();
+  </script>
+
   <title>{{ if .Title }}{{ .Title }} · {{ .Site.Title }}{{ else }}{{ .Site.Title }}{{ end }}</title>
   <meta name="description" content="{{ with .Description }}{{ . }}{{ else }}{{ .Site.Params.description }}{{ end }}">
 
@@ -46,6 +55,8 @@
         {{ end }}
       </div>
 
+      {{ partial "theme-switch.html" . }}
+
       <a class="button" href="{{ .Site.Params.github }}" target="_blank" rel="noreferrer">GitHub</a>
     </div>
   </header>
@@ -60,6 +71,8 @@
       <span>{{ $home.footer.text }}</span>
     </div>
   </footer>
+
+  <script src="/js/theme-switcher.js" defer></script>
 </body>
 
 </html>

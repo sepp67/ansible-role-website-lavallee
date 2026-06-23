@@ -1,0 +1,10 @@
+{{ $home := index site.Data (printf "home.%s" .Site.Language.Lang) }}
+{{ if not $home }}{{ $home = index site.Data "home.en" }}{{ end }}
+<div class="theme-switch" role="group" aria-label="{{ $home.theme_switch.aria_label }}">
+  <button type="button" class="theme-switch__btn" data-theme-btn="sobre" aria-pressed="true">
+    {{ $home.theme_switch.sober }}
+  </button>
+  <button type="button" class="theme-switch__btn" data-theme-btn="light" aria-pressed="false">
+    {{ $home.theme_switch.light }}
+  </button>
+</div>
